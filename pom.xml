@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>nl.knaw.dans.easy</groupId>
-  <artifactId>easy-module-archetype</artifactId>
-  <version>1.0</version>
-  <packaging>maven-archetype</packaging>
-  <name>EASY scala task Maven Archetype</name>
-  <description>Maven archetype for creating an EASY task project.</description>
-  <build>
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.archetype</groupId>
-        <artifactId>archetype-packaging</artifactId>
-        <version>2.2</version>
-      </extension>
-    </extensions>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-archetype-plugin</artifactId>
-          <version>2.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nl.knaw.dans.easy</groupId>
+    <artifactId>easy-module-archetype</artifactId>
+    <version>1.x-SNAPSHOT</version>
+    <packaging>maven-archetype</packaging>
+    <name>EASY Module Archetype</name>
+    <description>Maven archetype for creating an EASY module.</description>
+    <scm>
+        <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>2.2</version>
+            </extension>
+        </extensions>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

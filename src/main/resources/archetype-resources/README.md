@@ -12,6 +12,7 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
+${description}
 ###
 
 
@@ -22,13 +23,15 @@ ARGUMENTS
 
 
 
+### Example usage
 
-``${artifactId}``
+``${artifactId} -o value``
+
 
 INSTALLATION AND CONFIGURATION
 ------------------------------
 
-### Installation steps:
+### Installation steps
 
 1. Unzip the tarball to a directory of your choice, e.g. /opt/
 2. A new directory called ${artifactId}-<version> will be created
@@ -36,8 +39,8 @@ INSTALLATION AND CONFIGURATION
 
 ### Configuration
 
-General configuration settings can be set in ``${homeDir}/cfg/appliation.properties`` and logging can be configured
-in ``${homeDir}/cfg/logback.xml``. The available settings are explained in comments in aforementioned files.
+General configuration settings can be set in ``src/main/assembly/dist/cfg/appliation.properties`` and logging can be configured
+in ``src/main/assembly/dist/cfg/logback.xml``. The available settings are explained in comments in aforementioned files.
 
 
 BUILDING FROM SOURCE

@@ -16,9 +16,10 @@
 		<requiredProperty key="package">
 			<defaultValue>${groupId}.${taskId}</defaultValue>
 		</requiredProperty>
-		<requiredProperty key="name"/>
+		<requiredProperty key="name">
+			<defaultValue>EASY ${taskId}</defaultValue>
+		</requiredProperty>
 		<requiredProperty key="description"/>
-		<requiredProperty key="homeDir" />
 	</requiredProperties>
 	<fileSets>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">

@@ -53,9 +53,3 @@ Steps:
         git clone https://github.com/DANS-KNAW/${artifactId}.git
         cd ${artifactId}
         mvn install
-
-
-[client command-line utilities]: https://wiki.duraspace.org/display/FEDORA38/Client+Command-line+Utilities
-[FOXML]: https://wiki.duraspace.org/pages/viewpage.action?pageId=66585857
-[dans-parent]: https://github.com/DANS-KNAW/dans-parent
-[json]: http://json.org/

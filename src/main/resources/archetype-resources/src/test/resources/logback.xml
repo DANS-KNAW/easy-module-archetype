@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration
+<configuration>
 
     <!-- No logging during the build -->
 	<root level="off" />

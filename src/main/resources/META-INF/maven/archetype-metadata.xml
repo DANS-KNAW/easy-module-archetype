@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+	name="easy-module-template"
+	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<requiredProperties>
+		<requiredProperty key="groupId">
+			<defaultValue>nl.knaw.dans.easy</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="taskId" />
+		<requiredProperty key="mainClass" />
+		<requiredProperty key="artifactId">
+			<defaultValue>easy-${taskId}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="package">
+			<defaultValue>${groupId}.${taskId}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="name">
+			<defaultValue>EASY ${taskId}</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="description"/>
+	</requiredProperties>
+	<fileSets>
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/main/scala</directory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/test/scala</directory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src</directory>
+			<includes>
+				<include>**/resources/**/*</include>
+				<include>**/assembly/**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory></directory>
+			<includes>
+				<include>*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</archetype-descriptor>

@@ -6,30 +6,31 @@ easy-module-archetype
 SYNOPSIS
 --------
 
-After building from source, run the following command to generate an EASY module archetype:
-
-`mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy -DarchetypeArtifactId=easy-module-archetype -DarchetypeVersion=1.0`
+           mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
+                    -DarchetypeArtifactId=easy-module-archetype \
+                    -DarchetypeVersion=1.x-SNAPSHOT \
+                    -DgroupId=nl.knaw.dans.easy \
+                    -DartefactId=easy-module \
+                    -Dpackage=nl.knaw.dans.easy.module \
+                    -DmoduleSubpackage=module \
+                    -Dname="EASY Module" \
+                    -Ddescription="A longer description of this module"
 
 
 DESCRIPTION
 -----------
 
 ### Maven Archetype Plug-in
-Creates an EASY scala project, prepopulated with common files and structure.
+
+Creates an EASY scala project, prepopulated with common files and structure. 
 
 see <http://maven.apache.org/archetype/maven-archetype-plugin>
 
-
-ARGUMENTS
-----------
-
-* `-DgroupId`, -- defaults to **nl.knaw.dans.easy**
-* `-DartifactId`
-* `-Ddescription`, -- description of module task in the pom
-* `-Dname`, -- used in pom
-* `-Dversion`, -- defaults to **SNAPSHOT**
-
 ### Example usage
+
+Using interactively retrieved parameters in the defaults of others does not currently seem feasible. The order in which the 
+parameters are asked from the user cannot be configured, and does not seem to follow any predictable pattern. That is why 
+some redundant information needs to be provided. The `moduleSubpackage` parameter *must* be the last package in `package`.
 
       mvn archetype:generate \ 
                 -DarchetypeGroupId=nl.knaw.dans.easy \
@@ -38,9 +39,21 @@ ARGUMENTS
                 -DartifactId=easy-test-module \
                 -Ddescription="A test module" \
                 -Dpackage=nl.knaw.dans.easy.test 
+                -DmoduleSubpackage=test
 
 This will create a module called `easy-test-module`. You need to execute `mvn license:format` in this module before
 you can successfully build it.
+
+ARGUMENTS
+----------
+
+* `-DgroupId`, -- the group ID for the new project. Defaults to `nl.knaw.dans.easy`.
+* `-DartifactId` -- the artifact ID for the new project. Use all-lower-case and dash-separated names, starting with `easy-`
+* `-Ddescription`, -- longer description for the new project
+* `-Dname`, -- long name for the new project
+* `-DmoduleSubpackage`, - the package under `nl.knaw.dans.easy` that is used by this project
+* `-Dversion`, -- defaults to **1.x-SNAPSHOT**
+
 
 INSTALLATION AND CONFIGURATION
 ------------------------------

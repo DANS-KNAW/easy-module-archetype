@@ -6,36 +6,54 @@ easy-module-archetype
 SYNOPSIS
 --------
 
-After building from source, run the following command to generate an EASY module archetype:
-
-`mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy -DarchetypeArtifactId=easy-module-archetype -DarchetypeVersion=1.0`
+           mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
+                    -DarchetypeArtifactId=easy-module-archetype \
+                    -DarchetypeVersion=1.x-SNAPSHOT \
+                    -DgroupId=nl.knaw.dans.easy \
+                    -DartefactId=easy-module \
+                    -Dpackage=nl.knaw.dans.easy.module \
+                    -DmoduleSubpackage=module \
+                    -Dname="EASY Module" \
+                    -Ddescription="A longer description of this module"
 
 
 DESCRIPTION
 -----------
 
 ### Maven Archetype Plug-in
-Creates an EASY scala project, prepopulated with common files and structure.
+
+Creates an EASY scala project, prepopulated with common files and structure. 
 
 see <http://maven.apache.org/archetype/maven-archetype-plugin>
 
+### Example usage
+
+Using interactively retrieved parameters in the defaults of others does not currently seem feasible. The order in which the 
+parameters are asked from the user cannot be configured, and does not seem to follow any predictable pattern. That is why 
+some redundant information needs to be provided. The `moduleSubpackage` parameter *must* be the last package in `package`.
+
+      mvn archetype:generate \ 
+                -DarchetypeGroupId=nl.knaw.dans.easy \
+                -DarchetypeArtifactId=easy-module-archetype \ 
+                -DarchetypeVersion=1.x-SNAPSHOT \
+                -DartifactId=easy-test-module \
+                -Ddescription="A test module" \
+                -Dpackage=nl.knaw.dans.easy.test 
+                -DmoduleSubpackage=test
+
+This will create a module called `easy-test-module`. You need to execute `mvn license:format` in this module before
+you can successfully build it.
 
 ARGUMENTS
 ----------
 
-* `-DgroupId`, -- defaults to **nl.knaw.dans.easy**
-* `-DtaskId`, -- the name of the task, without the *easy*-prefix
-* `-DartifactId`, -- defaults to **easy-&lt;taskId&gt;**
-* `-DmainClass`, -- should be similar to &lt;taskId&gt;, but camelCased
-* `-Ddescription`, -- description of the task in the pom, and README
-* `-Dname`, -- used in pom, defaults to **EASY &lt;taskId&gt;**
-* `-Dversion`, -- defaults to **SNAPSHOT**
+* `-DgroupId`, -- the group ID for the new project. Defaults to `nl.knaw.dans.easy`.
+* `-DartifactId` -- the artifact ID for the new project. Use all-lower-case and dash-separated names, starting with `easy-`
+* `-Ddescription`, -- longer description for the new project
+* `-Dname`, -- long name for the new project
+* `-DmoduleSubpackage`, - the package under `nl.knaw.dans.easy` that is used by this project
+* `-Dversion`, -- defaults to **1.x-SNAPSHOT**
 
-### Example usage
-
-`mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy -DarchetypeArtifactId=easy-module-archetype -DarchetypeVersion=1.0 -DtaskId=new-task -DmainClass=NewTask -Ddescription="A module called EASY new-task"`
-
-This will create a module *easy-new-task* with *nl.knaw.dans.easy.new-task.NewTask.scala* as its main Class.
 
 INSTALLATION AND CONFIGURATION
 ------------------------------
@@ -43,7 +61,7 @@ INSTALLATION AND CONFIGURATION
 ### Installation steps:
 
 1. Unzip the tarball to a directory of your choice, e.g. /opt/
-2. A new directory called easy-module-archetype-&lt;version&gt; will be created
+2. A new directory called easy-module-archetype-<version> will be created
 
 
 BUILDING FROM SOURCE

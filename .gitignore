@@ -11,7 +11,7 @@ buildNumber.properties
 *~
 *.swp
 *.iml
-.idea/
+/.idea
 .DS_Store
 apphome.sh
 home/

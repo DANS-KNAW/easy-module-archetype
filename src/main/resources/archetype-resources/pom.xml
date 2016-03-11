@@ -31,7 +31,7 @@
 	<url>http://easy.dans.knaw.nl</url>
 	<description>${description}</description>
 	<properties>
-		<main-class>${package}.${mainClass}</main-class>
+		<main-class>${package}.Command</main-class>
 	</properties>
 	<scm>
 		<developerConnection>scm:git:https://github.com/DANS-KNAW/${artifactId}</developerConnection>
@@ -45,8 +45,15 @@
 		<dependency>
 			<groupId>org.scalatest</groupId>
 			<artifactId>scalatest_2.11</artifactId>
-			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.scalamock</groupId>
+            <artifactId>scalamock-scalatest-support_2.11</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.rogach</groupId>
+            <artifactId>scallop_2.11</artifactId>
+        </dependency>
 	</dependencies>
 	<repositories>
 		<repository>

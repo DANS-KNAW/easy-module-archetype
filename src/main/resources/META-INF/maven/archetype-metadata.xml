@@ -5,21 +5,17 @@
 	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<requiredProperties>
+        <requiredProperty key="artifactId" />
+        <requiredProperty key="description"/>
 		<requiredProperty key="groupId">
 			<defaultValue>nl.knaw.dans.easy</defaultValue>
 		</requiredProperty>
-		<requiredProperty key="taskId" />
-		<requiredProperty key="mainClass" />
-		<requiredProperty key="artifactId">
-			<defaultValue>easy-${taskId}</defaultValue>
-		</requiredProperty>
-		<requiredProperty key="package">
-			<defaultValue>${groupId}.${taskId}</defaultValue>
-		</requiredProperty>
-		<requiredProperty key="name">
-			<defaultValue>EASY ${taskId}</defaultValue>
-		</requiredProperty>
-		<requiredProperty key="description"/>
+        <requiredProperty key="moduleSubpackage" />
+        <requiredProperty key="name" />
+        <requiredProperty key="package" />
+        <requiredProperty key="version">
+            <defaultValue>1.x-SNAPSHOT</defaultValue>
+        </requiredProperty>
 	</requiredProperties>
 	<fileSets>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -46,6 +42,9 @@
 			<includes>
 				<include>*</include>
 			</includes>
+            <excludes>
+                <exclude>pom.xml</exclude>
+            </excludes>
 		</fileSet>
 	</fileSets>
 </archetype-descriptor>

@@ -10,10 +10,10 @@ import org.rogach.scallop.ScallopConf
 
 class CommandLineOptions (args: Array[String]) extends ScallopConf(args) {
   printedName = "${artifactId}";
-  val ________ = " " * printedName.size
+  val _________ = " " * printedName.size
 
   version(s"${symbol_dollar}printedName v${symbol_dollar}{Version()}")
-  banner("""
+  banner(s"""
            |<Replace with one sentence describing the main task of this module>
            |
            |Usage:

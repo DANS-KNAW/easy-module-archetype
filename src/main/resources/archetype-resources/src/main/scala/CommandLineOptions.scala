@@ -9,8 +9,8 @@ import java.net.URL
 import org.rogach.scallop.ScallopConf
 
 class CommandLineOptions(args: Array[String]) extends ScallopConf(args) {
-  printedName = "${artifactId}";
   val _________ = " " * printedName.size
+  printedName = "${artifactId}"
 
   version(s"${symbol_dollar}printedName v${symbol_dollar}{Version()}")
   banner(s"""

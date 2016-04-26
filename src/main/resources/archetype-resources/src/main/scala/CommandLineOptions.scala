@@ -8,7 +8,7 @@ import java.net.URL
 
 import org.rogach.scallop.ScallopConf
 
-class CommandLineOptions (args: Array[String]) extends ScallopConf(args) {
+class CommandLineOptions(args: Array[String]) extends ScallopConf(args) {
   printedName = "${artifactId}";
   val _________ = " " * printedName.size
 

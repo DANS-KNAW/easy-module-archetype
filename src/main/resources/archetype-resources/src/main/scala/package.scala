@@ -4,6 +4,8 @@ import java.util.Properties
 
 package object ${moduleSubpackage} {
 
+  val homeDir = new File(System.getProperty("app.home"))
+
   case class Parameters(/* Insert parameters */) {
     override def toString: String =
       s"<Replace with nicely formatted string with name-value style output of parameters>"

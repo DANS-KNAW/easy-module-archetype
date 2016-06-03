@@ -10,7 +10,7 @@ SYNOPSIS
                     -DarchetypeArtifactId=easy-module-archetype \
                     -DarchetypeVersion=1.x-SNAPSHOT \
                     -DgroupId=nl.knaw.dans.easy \
-                    -DartefactId=easy-module \
+                    -DartifactId=easy-module \
                     -Dpackage=nl.knaw.dans.easy.module \
                     -DmoduleSubpackage=module \
                     -Dname="EASY Module" \

@@ -1,6 +1,6 @@
 easy-module-archetype
 =====================
--[![Build Status](https://travis-ci.org/DANS-KNAW/easy-module-archetype.png?branch=master)](https://travis-ci.org/DANS-KNAW/easy-module-archetype)
+[![Build Status](https://travis-ci.org/DANS-KNAW/easy-module-archetype.png?branch=master)](https://travis-ci.org/DANS-KNAW/easy-module-archetype)
 
 
 SYNOPSIS
@@ -10,7 +10,7 @@ SYNOPSIS
                     -DarchetypeArtifactId=easy-module-archetype \
                     -DarchetypeVersion=1.x-SNAPSHOT \
                     -DgroupId=nl.knaw.dans.easy \
-                    -DartefactId=easy-module \
+                    -DartifactId=easy-module \
                     -Dpackage=nl.knaw.dans.easy.module \
                     -DmoduleSubpackage=module \
                     -Dname="EASY Module" \

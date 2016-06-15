@@ -28,7 +28,7 @@
 			<includes>
                 <include>${artifactId}</include>
 			</includes>
-			<fileMode>0754</fileMode>
+			<fileMode>0755</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>${symbol_dollar}{project.basedir}/src/main/assembly/dist</directory>

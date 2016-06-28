@@ -37,6 +37,9 @@
 				<include>**/assembly/**/*</include>
 			</includes>
 		</fileSet>
+		<fileSet filtered="false" encoding="UTF-8">
+			<directory>.github</directory>
+		</fileSet>
 		<fileSet filtered="true" encoding="UTF-8">
 			<directory></directory>
 			<includes>

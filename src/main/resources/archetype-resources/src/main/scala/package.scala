@@ -1,5 +1,6 @@
 package ${groupId}
 
+import java.io.File
 import java.util.Properties
 
 package object ${moduleSubpackage} {
@@ -18,6 +19,4 @@ package object ${moduleSubpackage} {
       props.getProperty("application.version")
     }
   }
-
-
 }

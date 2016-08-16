@@ -1,4 +1,4 @@
-package ${package}.${moduleSubpackage}
+package ${package}
 
 import org.scalamock.scalatest.MockFactory
 import org.scalatest._

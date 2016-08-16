@@ -1,13 +1,13 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.${moduleSubpackage}
+package ${package}
 
 import java.io.{File, PrintWriter}
 import java.net.URL
 
-import ${package}.${moduleSubpackage}.CommandLineOptions._
-import ${package}.${moduleSubpackage}.Parameters
+import ${package}.CommandLineOptions._
+import ${package}.Parameters
 import org.apache.commons.configuration.PropertiesConfiguration
 import org.rogach.scallop.ScallopConf
 import org.slf4j.LoggerFactory

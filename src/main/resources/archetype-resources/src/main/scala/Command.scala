@@ -1,10 +1,10 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.${moduleSubpackage}
+package ${package}
 
 import org.slf4j.LoggerFactory
-import ${package}.${moduleSubpackage}.{CommandLineOptions => cmd}
+import ${package}.{CommandLineOptions => cmd}
 
 object Command {
   val log = LoggerFactory.getLogger(getClass)

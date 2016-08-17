@@ -6,8 +6,8 @@ package ${package}
 import java.io.{File, PrintWriter}
 import java.net.URL
 
-import nl.knaw.dans.easy.license.CommandLineOptions._
-import nl.knaw.dans.easy.license.Parameters
+import ${package}.CommandLineOptions._
+import ${package}.Parameters
 import org.apache.commons.configuration.PropertiesConfiguration
 import org.rogach.scallop.ScallopConf
 import org.slf4j.LoggerFactory

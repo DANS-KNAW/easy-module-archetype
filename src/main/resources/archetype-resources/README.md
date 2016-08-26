@@ -43,8 +43,8 @@ INSTALLATION AND CONFIGURATION
 
 ### Configuration
 
-General configuration settings can be set in `src/main/assembly/dist/cfg/appliation.properties` and logging can be configured
-in `src/main/assembly/dist/cfg/logback.xml`. The available settings are explained in comments in aforementioned files.
+General configuration settings can be set in `cfg/application.properties` and logging can be configured
+in `cfg/logback.xml`. The available settings are explained in comments in aforementioned files.
 
 
 BUILDING FROM SOURCE

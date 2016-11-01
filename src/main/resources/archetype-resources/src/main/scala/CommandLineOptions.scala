@@ -16,6 +16,9 @@ class CommandLineOptions(args: Array[String]) extends ScallopConf(args) {
 
   import CommandLineOptions.log
 
+  appendDefaultToDescription = true
+  editBuilder(_.setHelpWidth(110))
+
   printedName = "${artifactId}"
   val _________ = " " * printedName.length
 
@@ -31,7 +34,9 @@ class CommandLineOptions(args: Array[String]) extends ScallopConf(args) {
            |Options:
            |""".stripMargin)
   //val url = opt[String]("someOption", noshort = true, descr = "Description of the option", default = Some("Default value"))
+
   footer("")
+  verify()
 }
 
 object CommandLineOptions {

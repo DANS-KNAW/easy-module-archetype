@@ -19,6 +19,9 @@ import java.io.{ByteArrayOutputStream, File}
 
 import ${package}.CustomMatchers._
 
+import org.scalamock.scalatest.MockFactory
+import org.scalatest._
+
 class CommandLineOptionsSpec extends FlatSpec with Matchers {
 
   private val clo = new CommandLineOptions(Array[String]()) {

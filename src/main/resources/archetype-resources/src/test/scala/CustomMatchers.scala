@@ -17,6 +17,9 @@ package ${package}
 
 import java.io.File
 
+import scala.io.Source.fromFile
+
+import org.scalatest.matchers.{MatchResult, Matcher}
 
 /** Does not dump the full file but just the searched content if it is not found.
   *
@@ -26,7 +29,7 @@ trait CustomMatchers {
     def apply(left: File): MatchResult = {
       def trimLines(s: String): String = s.split("\n").map(_.trim).mkString("\n")
       MatchResult(
-        trimLines(readFileToString(left)).contains(trimLines(content)),
+        trimLines(fromFile(left).mkString).contains(trimLines(content)),
         s"$left did not contain: $content" ,
         s"$left contains $content"
       )

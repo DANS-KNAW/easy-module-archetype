@@ -17,7 +17,7 @@ package ${package}
 
 import java.io.File
 
-import scala.io.Source.fromFile
+import scala.io.Source
 
 import org.scalatest.matchers.{MatchResult, Matcher}
 
@@ -29,7 +29,7 @@ trait CustomMatchers {
     def apply(left: File): MatchResult = {
       def trimLines(s: String): String = s.split("\n").map(_.trim).mkString("\n")
       MatchResult(
-        trimLines(fromFile(left).mkString).contains(trimLines(content)),
+        trimLines(Source.fromFile(left).mkString).contains(trimLines(content)),
         s"$left did not contain: $content" ,
         s"$left contains $content"
       )

@@ -14,7 +14,7 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-<Replace with a longer description of this module>
+${description}
 
 
 ARGUMENTS

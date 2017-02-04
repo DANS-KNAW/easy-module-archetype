@@ -19,7 +19,7 @@
 	</requiredProperties>
 	<fileSets>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
-			<directory>src/main/scala</directory>
+			<directory>src/main/scala/</directory>
 			<includes>
 				<include>**/*</include>
 			</includes>
@@ -33,7 +33,6 @@
 		<fileSet filtered="true" encoding="UTF-8">
 			<directory>src</directory>
 			<includes>
-				<include>**/resources/**/*</include>
 				<include>**/assembly/**/*</include>
 			</includes>
 		</fileSet>

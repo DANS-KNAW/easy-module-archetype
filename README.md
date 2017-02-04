@@ -28,6 +28,15 @@ see <http://maven.apache.org/archetype/maven-archetype-plugin>
 
 ### Example usage
 
+The archetype serves two purposes:
+
+* It sets up a skeleton project for you if you need to create a new EASY module.
+* More importantly, the skeleton is set up with the [current common practices].
+
+[current common practices]: common-practices.md
+
+#### Generating a skeleton project with Maven
+
 Using interactively retrieved parameters in the defaults of others does not currently seem feasible. The order in which the 
 parameters are asked from the user cannot be configured, and does not seem to follow any predictable pattern. That is why 
 some redundant information needs to be provided. The `moduleSubpackage` parameter *must* be the last package in `package`.
@@ -41,8 +50,30 @@ some redundant information needs to be provided. The `moduleSubpackage` paramete
                 -Dpackage=nl.knaw.dans.easy.test 
                 -DmoduleSubpackage=test
 
-This will create a module called `easy-test-module`. You need to execute `mvn license:format` in this module before
-you can successfully build it.
+This will create a module called `easy-test-module`. 
+
+
+#### Generating the license headers
+
+Execute `mvn license:format` in this module before you can successfully build it. This is due to the fact that the license headers
+are not included initially. The added benefit of including them in the template project would be minimal in any case, because as soon
+as you start adding source file you will need to generate new headers with the command mentioned above anyway.
+
+#### Delete what you do not use
+
+The skeleton project contains stubs for a daemon with an HTTP interface and a command line application, and by the time you read this,
+possibly more stubs. It is important to delete the parts that you are not going to use, to avoid clutter. Yes, even if you may use it
+in the future, just delete the stuff! For example: if you only need a command line application, you should delete
+
+* the daemon scripts in `src/main/assembly/bin`
+* the service-related classes
+* the `run-service` sub-command
+
+#### Build and test the skeleton project
+ 
+After `mvn clean install` ...
+
+
 
 ARGUMENTS
 ----------

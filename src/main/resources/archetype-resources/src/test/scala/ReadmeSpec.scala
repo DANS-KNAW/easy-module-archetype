@@ -4,17 +4,16 @@ import java.io.{ByteArrayOutputStream, File}
 
 import ${package}.CustomMatchers._
 
-import org.scalamock.scalatest.MockFactory
 import org.scalatest._
+import org.apache.commons.configuration.PropertiesConfiguration
 
 class ReadmeSpec extends FlatSpec with Matchers {
-  val helpInfo = {
-    val props = new PropertiesConfiguration()
-    props.setProperty("FILL-IN-PROPERTY-NAME", "FILL-IN-VALUE-TO-APPEAR-AS-DEFAULT-IN-README")
-    // Repeat previous line for all configuration properties accessed in CommanlineOptions
+  private val helpInfo = {
+    System.setProperty("app.home", "src/main/assembly/dist") // Use the default settings in this test
+    val mockApp = new ${javaName}App() {}
     val mockedStdOut = new ByteArrayOutputStream()
     Console.withOut(mockedStdOut) {
-      new CommandLineOptions(Array(), props).printHelp()
+      CommandLineOptions(Seq(), mockApp).printHelp()
     }
     mockedStdOut.toString
   }

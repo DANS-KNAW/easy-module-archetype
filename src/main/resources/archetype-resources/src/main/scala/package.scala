@@ -7,7 +7,6 @@ import scala.util.{Failure, Success, Try}
 package object ${moduleSubpackage} {
   val CONTEXT_ATTRIBUTE_APPLICATION = "${groupId}.${moduleSubpackage}.${javaName}App"
 
-
   def getVersion(): String = {
     resource.managed(scala.io.Source.fromFile(Paths.get(System.getProperty("app.home"), "version").toFile)).acquireAndGet {
       _.mkString

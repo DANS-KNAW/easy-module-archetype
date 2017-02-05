@@ -5,13 +5,13 @@ package ${package}
 
 import org.rogach.scallop.{ScallopConf, ScallopOption, Subcommand, singleArgConverter}
 
-case class CommandLineOptions(override val args: Array[String], app: ${javaName}App) extends ScallopConf(args) {
+case class CommandLineOptions(override val args: Seq[String], app: ${javaName}App) extends ScallopConf(args) {
   appendDefaultToDescription = true
   editBuilder(_.setHelpWidth(110))
   printedName = "${artifactId}"
   private val _________ = " " * printedName.length
   private val SUBCOMMAND_SEPARATOR = "---\n"
-  val description = s"""${description}"""
+  private val description = s"""${description}"""
   private val synopsis = s"""${symbol_dollar}printedName \\
            |      <synopsis of command line parameters> \\
            |      <...possibly continued again, or all joined on one line>""".stripMargin
@@ -30,7 +30,7 @@ case class CommandLineOptions(override val args: Array[String], app: ${javaName}
 
   val runService = new Subcommand("run-service") {
     descr(
-      "Starts the ${name} as a daemon that services HTTP requests")
+      "Starts ${name} as a daemon that services HTTP requests")
     footer(SUBCOMMAND_SEPARATOR)
   }
   addSubcommand(runService)

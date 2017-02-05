@@ -47,7 +47,8 @@ some redundant information needs to be provided. The `moduleSubpackage` paramete
                 -DarchetypeVersion=1.x-SNAPSHOT \
                 -DartifactId=easy-test-module \
                 -Ddescription="A test module" \
-                -Dpackage=nl.knaw.dans.easy.test 
+                -Dpackage=nl.knaw.dans.easy.test \
+                -DjavaName=ModuleTest \
                 -DmoduleSubpackage=test
 
 This will create a module called `easy-test-module`. 

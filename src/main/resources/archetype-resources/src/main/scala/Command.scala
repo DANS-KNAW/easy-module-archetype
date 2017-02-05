@@ -23,6 +23,9 @@ object Command extends App with ${javaName}App with DebugEnhancedLogging {
     case _ => Failure(new IllegalArgumentException(s"Unknown command: ${opts.subcommand}"))
   }
 
+  result.map(msg => println(s"OK: $msg"))
+    .recover { case e => println(s"FAILED: ${e.getMessage}") }
+
   private def runAsService(): Try[FeedBackMessage] = Try {
     import logger._
     val service = new ${javaName}Service()

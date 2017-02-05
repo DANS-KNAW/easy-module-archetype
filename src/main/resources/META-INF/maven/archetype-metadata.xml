@@ -25,16 +25,28 @@
 				<include>**/*</include>
 			</includes>
 		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/assembly</directory>
+			<includes>
+				<include>**/**</include>
+			</includes>
+		</fileSet>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
 			<directory>src/test/scala</directory>
 			<includes>
 				<include>**/*</include>
 			</includes>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src</directory>
+		<fileSet filtered="false" encoding="UTF-8">
+			<directory>src/test/resources</directory>
 			<includes>
-				<include>**/assembly/**/*</include>
+				<include>*</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/test/resources/debug-config</directory>
+			<includes>
+				<include>**/**</include>
 			</includes>
 		</fileSet>
 		<fileSet filtered="false" encoding="UTF-8">

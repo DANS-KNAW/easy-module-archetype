@@ -16,7 +16,7 @@ case class CommandLineOptions(override val args: Seq[String], app: ${javaName}Ap
            |      <synopsis of command line parameters> \\
            |      <...possibly continued again, or all joined on one line>""".stripMargin
 
-  version(s"${symbol_dollar}printedName v${symbol_dollar}{getVersion()}")
+  version(s"${symbol_dollar}printedName v${symbol_dollar}{app.version}")
   banner(s"""
            |  ${symbol_dollar}description
            |

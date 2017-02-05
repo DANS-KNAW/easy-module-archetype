@@ -6,6 +6,7 @@
 /release.properties
 /dependency-reduced-pom.xml
 /buildNumber.properties
+/init-project.sh
 *.class
 *~
 *.swp
@@ -15,6 +16,7 @@
 /apphome.sh
 /home/
 /data/
+/data-*/
 
 # Eclipse
 /.project

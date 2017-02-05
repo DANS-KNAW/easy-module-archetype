@@ -3,9 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}
 
-import java.net.{URI, URLConnection}
-import java.nio.file.{Files, Paths}
-import java.util.UUID
+import javax.servlet.ServletContext
 
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 import org.eclipse.jetty.ajp.Ajp13SocketConnector
@@ -23,6 +21,7 @@ class ${javaName}Service extends ${javaName}App with DebugEnhancedLogging {
   private val port = properties.getInt("daemon.http.port")
   private val server = new Server(port)
   private val context = new ServletContextHandler(ServletContextHandler.NO_SESSIONS)
+  context.setInitParameter(ScalatraListener.LifeCycleKey, "${package}.ServletMounter")
   context.setAttribute(CONTEXT_ATTRIBUTE_APPLICATION, this)
   context.addEventListener(new ScalatraListener())
   server.setHandler(context)
@@ -51,12 +50,21 @@ class ${javaName}Service extends ${javaName}App with DebugEnhancedLogging {
   }
 }
 
+class ServletMounter extends LifeCycle {
+  override def init(context: ServletContext): Unit = {
+    context.getAttribute(CONTEXT_ATTRIBUTE_APPLICATION) match {
+      case app: ${javaName}App => context.mount(${javaName}Servlet(app), "/")
+      case _ => throw new IllegalStateException("Service not configured: no ${javaName}App found")
+    }
+  }
+}
+
 case class ${javaName}Servlet(app: ${javaName}App) extends ScalatraServlet with DebugEnhancedLogging {
   import app._
   import logger._
 
   get("/") {
     contentType = "text/plain"
-    Ok("")
+    Ok("${name} Service running ...")
   }
 }

@@ -16,12 +16,25 @@
         <requiredProperty key="version">
             <defaultValue>1.x-SNAPSHOT</defaultValue>
         </requiredProperty>
+		<requiredProperty key="javaName" />
 	</requiredProperties>
 	<fileSets>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
-			<directory>src/main/scala</directory>
+			<directory>src/main/scala/</directory>
 			<includes>
 				<include>**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/assembly</directory>
+			<includes>
+				<include>**/**</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/ansible</directory>
+			<includes>
+				<include>**/**</include>
 			</includes>
 		</fileSet>
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -30,11 +43,16 @@
 				<include>**/*</include>
 			</includes>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src</directory>
+		<fileSet filtered="false" encoding="UTF-8">
+			<directory>src/test/resources</directory>
 			<includes>
-				<include>**/resources/**/*</include>
-				<include>**/assembly/**/*</include>
+				<include>*</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/test/resources/debug-config</directory>
+			<includes>
+				<include>**/**</include>
 			</includes>
 		</fileSet>
 		<fileSet filtered="false" encoding="UTF-8">

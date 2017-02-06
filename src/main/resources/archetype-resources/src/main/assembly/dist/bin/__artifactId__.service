@@ -1,0 +1,11 @@
+[Unit]
+Description=${name} Service
+
+[Service]
+ExecStart=/usr/local/${artifactId}/bin/${artifactId}-service-start
+
+User=${artifactId}
+Group=${artifactId}
+
+[Install]
+WantedBy=multi-user.target

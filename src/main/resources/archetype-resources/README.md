@@ -8,7 +8,9 @@ ${artifactId}
 SYNOPSIS
 --------
 
-    ${artifactId} params
+    ${artifactId} \
+            <synopsis of command line parameters> \
+            <...possibly continued again, or all joined on one line>
 
 
 DESCRIPTION
@@ -20,12 +22,18 @@ ${description}
 ARGUMENTS
 ---------
 
-<Replace with output from --help option on the command line>
+    Options:
 
+        --help      Show help message
+        --version   Show version of this program
+
+    Subcommand: run-service - Starts ${name} as a daemon that services HTTP requests
+        --help   Show help message
+    ---
 
 ### Example usage
 
-`${artifactId} -o value`
+    ${artifactId} -o value
 
 
 INSTALLATION AND CONFIGURATION
@@ -33,12 +41,12 @@ INSTALLATION AND CONFIGURATION
 
 ### Installation steps
 
-1. Unzip the tarball to a directory of your choice, e.g. /opt/
+1. Unzip the tarball to a directory of your choice, typically `/usr/local/`
 2. A new directory called ${artifactId}-<version> will be created
 3. Add the command script to your `PATH` environment variable by creating a symbolic link to it from a directory that is
    on the path, e.g. 
    
-        ln -s /opt/${artifactId}-<version>/bin/${artifactId} /usr/bin
+        ln -s /usr/local/${artifactId}-<version>/bin/${artifactId} /usr/bin
 
 
 ### Configuration

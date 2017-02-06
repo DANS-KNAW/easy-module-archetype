@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+  ServerName ${artifactId}
+
+  ErrorLog logs/${artifactId}-error.log
+  CustomLog logs/${artifactId}-access.log common
+  ProxyTimeout 600
+
+  <Location / >
+    ProxyPass ajp://localhost:20001/
+    ProxyPassReverse ajp://localhost:20001/
+  </Location>
+</VirtualHost>

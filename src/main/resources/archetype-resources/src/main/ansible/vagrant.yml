@@ -1,0 +1,34 @@
+
+- hosts: "${artifactId}"
+  become: yes
+  tasks:
+  - name: Install standard software
+    yum: name="{{ item }}"
+    with_items:
+      - java-1.8.0-openjdk
+      - httpd
+      - libsemanage-python
+
+  - name: Enable Apache HTTP Server
+    service: name=httpd enabled=true state=started
+
+  - name: Allow Apache HTTP Server to call back-end service
+    seboolean:
+      name: httpd_can_network_connect
+      state: yes
+      persistent: yes
+
+  - name: Configure server name
+    lineinfile: dest=/etc/httpd/conf/httpd.conf
+      line='ServerName ${artifactId}'
+      insertafter='^# ServerName.*$'
+
+  - name: Add configuration for site
+    template: src=site-config.template dest=/etc/httpd/conf.d/${artifactId}.conf
+
+  - include_role:
+      name: dans.${artifactId}
+      tasks_from: install.yml
+
+  - name: Reload Apache HTTP Server
+    service: name=httpd state=reloaded

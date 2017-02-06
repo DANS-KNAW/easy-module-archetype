@@ -14,6 +14,7 @@ SYNOPSIS
                     -Dpackage=nl.knaw.dans.easy.module \
                     -DmoduleSubpackage=module \
                     -Dname="EASY Module" \
+                    -DjavaName="EasyModule" \
                     -Ddescription="A longer description of this module"
 
 
@@ -39,7 +40,10 @@ The archetype serves two purposes:
 
 Using interactively retrieved parameters in the defaults of others does not currently seem feasible. The order in which the 
 parameters are asked from the user cannot be configured, and does not seem to follow any predictable pattern. That is why 
-some redundant information needs to be provided. The `moduleSubpackage` parameter *must* be the last package in `package`.
+some redundant information needs to be provided:
+
+* The `moduleSubpackage` parameter *must* be the last package in `package`.
+* The `javaName` parameter *must* be the `name` transformed into the format a Java class identifier (no spaces, capitals for the first letter of each word)
 
       mvn archetype:generate \ 
                 -DarchetypeGroupId=nl.knaw.dans.easy \
@@ -48,11 +52,11 @@ some redundant information needs to be provided. The `moduleSubpackage` paramete
                 -DartifactId=easy-test-module \
                 -Ddescription="A test module" \
                 -Dpackage=nl.knaw.dans.easy.test \
-                -DjavaName=ModuleTest \
+                -Dname="Module Test"
+                -DjavaName="ModuleTest" \
                 -DmoduleSubpackage=test
 
 This will create a module called `easy-test-module`. 
-
 
 #### Generating the license headers
 

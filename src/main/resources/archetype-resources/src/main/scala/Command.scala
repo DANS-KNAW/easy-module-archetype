@@ -5,11 +5,11 @@ package ${package}
 
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 
+import scala.language.reflectiveCalls
 import scala.util.{Failure, Try}
 
 object Command extends App with ${javaName}App with DebugEnhancedLogging {
   import logger._
-  import scala.language.reflectiveCalls
   type FeedBackMessage = String
 
   debug("Starting command line interface")

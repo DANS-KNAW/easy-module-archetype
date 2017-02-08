@@ -6,6 +6,7 @@ package ${package}
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 
 import scala.language.reflectiveCalls
+import scala.util.control.NonFatal
 import scala.util.{Failure, Try}
 
 object Command extends App with ${javaName}App with DebugEnhancedLogging {
@@ -24,7 +25,7 @@ object Command extends App with ${javaName}App with DebugEnhancedLogging {
   }
 
   result.map(msg => println(s"OK: $msg"))
-    .recover { case e => println(s"FAILED: ${e.getMessage}") }
+    .recover { case NonFatal(e) => println(s"FAILED: ${e.getMessage}") }
 
   private def runAsService(): Try[FeedBackMessage] = Try {
     import logger._

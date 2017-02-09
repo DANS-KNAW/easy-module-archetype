@@ -6,17 +6,18 @@ easy-module-archetype
 SYNOPSIS
 --------
 
-           mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
-                    -DarchetypeArtifactId=easy-module-archetype \
-                    -DarchetypeVersion=1.x-SNAPSHOT \
-                    -DgroupId=nl.knaw.dans.easy \
-                    -DartifactId=easy-module \
-                    -Dpackage=nl.knaw.dans.easy.module \
-                    -DmoduleSubpackage=module \
-                    -Dname="EASY Module" \
-                    -DjavaName="EasyModule" \
-                    -Ddescription="A longer description of this module"
-
+```
+mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
+        -DarchetypeArtifactId=easy-module-archetype \
+        -DarchetypeVersion=1.x-SNAPSHOT \
+        -DgroupId=nl.knaw.dans.easy \
+        -DartifactId=easy-module \
+        -Dpackage=nl.knaw.dans.easy.module \
+        -DmoduleSubpackage=module \
+        -Dname="EASY Module" \
+        -DjavaName="EasyModule" \
+        -Ddescription="A longer description of this module"
+```
 
 DESCRIPTION
 -----------
@@ -45,16 +46,18 @@ some redundant information needs to be provided:
 * The `moduleSubpackage` parameter *must* be the last package in `package`.
 * The `javaName` parameter *must* be the `name` transformed into the format a Java class identifier (no spaces, capitals for the first letter of each word)
 
-      mvn archetype:generate \ 
-                -DarchetypeGroupId=nl.knaw.dans.easy \
-                -DarchetypeArtifactId=easy-module-archetype \ 
-                -DarchetypeVersion=1.x-SNAPSHOT \
-                -DartifactId=easy-test-module \
-                -Ddescription="A test module" \
-                -Dpackage=nl.knaw.dans.easy.test \
-                -Dname="Module Test"
-                -DjavaName="ModuleTest" \
-                -DmoduleSubpackage=test
+```
+mvn archetype:generate \ 
+        -DarchetypeGroupId=nl.knaw.dans.easy \
+        -DarchetypeArtifactId=easy-module-archetype \ 
+        -DarchetypeVersion=1.x-SNAPSHOT \
+        -DartifactId=easy-test-module \
+        -Ddescription="A test module" \
+        -Dpackage=nl.knaw.dans.easy.test \
+        -Dname="Module Test"
+        -DjavaName="ModuleTest" \
+        -DmoduleSubpackage=test
+```
 
 This will create a module called `easy-test-module`. 
 

@@ -2,12 +2,10 @@ package ${package}
 
 import java.io.{ByteArrayOutputStream, File}
 
-import ${package}.CustomMatchers._
-
 import org.scalatest._
 import org.apache.commons.configuration.PropertiesConfiguration
 
-class ReadmeSpec extends FlatSpec with Matchers {
+class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
   private val helpInfo = {
     System.setProperty("app.home", "src/main/assembly/dist") // Use the default settings in this test
     val mockApp = new ${javaName}App() {}

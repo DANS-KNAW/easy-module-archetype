@@ -5,7 +5,9 @@ import java.io.{ByteArrayOutputStream, File}
 import org.scalatest._
 
 class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
-  private val clo = new CommandLineOptions(Array[String]()) {
+  System.setProperty("app.home", "src/main/assembly/dist") // Use the default settings in this test
+
+  private val clo = new CommandLineOptions(Array[String](), new ${javaName}App {}) {
     // avoids System.exit() in case of invalid arguments or "--help"
     override def verify(): Unit = {}
   }

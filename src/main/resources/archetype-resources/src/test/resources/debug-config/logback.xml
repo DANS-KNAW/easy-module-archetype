@@ -13,5 +13,5 @@
 	<root level="warn">
 		<appender-ref ref="FILE" />
 	</root>
-	<logger name="nl.knaw.dans.easy" level="info" />
+	<logger name="nl.knaw.dans.easy" level="trace" />
 </configuration>

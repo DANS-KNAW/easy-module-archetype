@@ -2,35 +2,37 @@ package ${package}
 
 import java.io.{ByteArrayOutputStream, File}
 
-import ${package}.CustomMatchers._
-
 import org.scalatest._
-import org.apache.commons.configuration.PropertiesConfiguration
 
-class ReadmeSpec extends FlatSpec with Matchers {
+class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
+  System.setProperty("app.home", "src/main/assembly/dist") // Use the default settings in this test
+
+  private val clo = new CommandLineOptions(Array[String](), new ${javaName}App {}) {
+    // avoids System.exit() in case of invalid arguments or "--help"
+    override def verify(): Unit = {}
+  }
+
   private val helpInfo = {
-    System.setProperty("app.home", "src/main/assembly/dist") // Use the default settings in this test
-    val mockApp = new ${javaName}App() {}
     val mockedStdOut = new ByteArrayOutputStream()
     Console.withOut(mockedStdOut) {
-      CommandLineOptions(Seq(), mockApp).printHelp()
+      clo.printHelp()
     }
     mockedStdOut.toString
   }
 
-  "arguments" should "be part of README.md" in {
-    val options = helpInfo.replaceAll("\\(default[^)]+\\)","").split("Options:")(1)
+  "options in help info" should "be part of README.md" in {
+    val lineSeparators = s"(${System.lineSeparator()})+"
+    val options = helpInfo.split(s"${lineSeparators}Options:$lineSeparators")(1)
+    options.trim.length shouldNot be (0)
     new File("README.md") should containTrimmed(options)
   }
 
   "synopsis in help info" should "be part of README.md" in {
-    val synopsis = helpInfo.split("Options:")(0).split("Usage:")(1)
-    new File("README.md") should containTrimmed(synopsis)
+    new File("README.md") should containTrimmed(clo.synopsis)
   }
 
-  "first banner line" should "be part of README.md and pom.xml" in {
-    val description = helpInfo.split("\n")(2)
-    new File("README.md") should containTrimmed(description)
-    new File("pom.xml") should containTrimmed(s"<description>$description</description>")
+  "description line(s) in help info" should "be part of README.md and pom.xml" in {
+    new File("README.md") should containTrimmed(clo.description)
+    new File("pom.xml") should containTrimmed(clo.description)
   }
 }

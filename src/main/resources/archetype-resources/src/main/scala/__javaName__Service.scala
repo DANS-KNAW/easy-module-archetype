@@ -58,13 +58,3 @@ class ServletMounter extends LifeCycle {
     }
   }
 }
-
-case class ${javaName}Servlet(app: ${javaName}App) extends ScalatraServlet with DebugEnhancedLogging {
-  import app._
-  import logger._
-
-  get("/") {
-    contentType = "text/plain"
-    Ok("${name} Service running ...")
-  }
-}

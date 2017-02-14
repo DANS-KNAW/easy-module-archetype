@@ -7,7 +7,9 @@ import java.nio.file.Paths
 
 import org.apache.commons.configuration.PropertiesConfiguration
 
-trait ${javaName}App
+import scala.io.Source
+
+trait ${javaName}App {
   // extends ...
   // with ...
   // Mix in the traits that provided the application's functionality

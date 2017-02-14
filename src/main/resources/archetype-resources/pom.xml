@@ -39,10 +39,7 @@
         <tag>HEAD</tag>
     </scm>
     <dependencies>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
+        <!-- testing -->
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>
@@ -51,22 +48,28 @@
             <groupId>org.scalamock</groupId>
             <artifactId>scalamock-scalatest-support_2.11</artifactId>
         </dependency>
+
+        <!-- Scala utils -->
         <dependency>
             <groupId>org.rogach</groupId>
             <artifactId>scallop_2.11</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-configuration</groupId>
-            <artifactId>commons-configuration</artifactId>
+            <groupId>com.jsuereth</groupId>
+            <artifactId>scala-arm_2.11</artifactId>
         </dependency>
         <dependency>
             <groupId>nl.knaw.dans.lib</groupId>
             <artifactId>dans-scala-lib</artifactId>
         </dependency>
+
+        <!-- apache commons -->
         <dependency>
-            <groupId>com.jsuereth</groupId>
-            <artifactId>scala-arm_2.11</artifactId>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
         </dependency>
+
+        <!-- service -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
@@ -91,6 +94,12 @@
         <dependency>
             <groupId>org.scalatra</groupId>
             <artifactId>scalatra-scalate_2.11</artifactId>
+        </dependency>
+
+        <!-- logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
     </dependencies>
     <repositories>

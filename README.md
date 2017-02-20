@@ -88,15 +88,15 @@ ARGUMENTS
 
 Parameter                | Description / value
 -------------------------|-----------------------------------------------
-archetypeGroupId         | `nl.knaw.dans.easy`
-archetypeArtifactId      | `easy-module-archetype`  
-archetypeVersion         | The version of the archetype your want to use
-artifactId               | Archetype ID for your module `easy-<some name>`
-description              | Short description
-package                  | Main package of your module, must be directly under `nl.knaw.dans.easy`
-moduleSubpackage         | The last part o 
-name                     | Name of your project, capitalized title style, e.g. "My Test Module"
-javaName                 | The same as `name` but with no spaces: `MyTestModule`
+`archetypeGroupId`       | `nl.knaw.dans.easy`.
+`archetypeArtifactId`    | `easy-module-archetype`  
+`archetypeVersion`       | The version of the archetype your want to use.
+`artifactId`             | Archetype ID for your module `easy-<some name>`.
+`description`            | Short description.
+`package`                | Main package of your module, must be directly under `nl.knaw.dans.easy`, e.g., `nl.knaw.dans.easy.test`.
+`moduleSubpackage`       | The unqualified name of your your main package, e.g., `test`.
+`name`                   | Name of your project, capitalized title style, e.g. "My Test Module".
+`javaName`               | The same as `name` but with no spaces: `MyTestModule`.
 
 
 
@@ -104,7 +104,8 @@ javaName                 | The same as `name` but with no spaces: `MyTestModule`
 INSTALLATION AND CONFIGURATION
 ------------------------------
 
-No installation is needed if 
+* Add `http://maven.dans.knaw.nl/` as a plug-in repository if you want to use a release version of this plug-in.
+* Clone and build the project if you want to use a snapshot.
 
 
 BUILDING FROM SOURCE

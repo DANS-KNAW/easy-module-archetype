@@ -15,6 +15,9 @@
 # limitations under the License.
 #
 
+echo "Setting .gitignore"
+mv _gitignore .gitignore
+
 echo "Building ..."
 mvn license:format clean install
 

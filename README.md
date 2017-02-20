@@ -2,6 +2,7 @@ easy-module-archetype
 =====================
 [![Build Status](https://travis-ci.org/DANS-KNAW/easy-module-archetype.png?branch=master)](https://travis-ci.org/DANS-KNAW/easy-module-archetype)
 
+Generate a skeleton EASY Module.
 
 SYNOPSIS
 --------
@@ -17,17 +18,11 @@ SYNOPSIS
                     -DjavaName="EasyModule" \
                     -Ddescription="A longer description of this module"
 
-
 DESCRIPTION
 -----------
 
-### Maven Archetype Plug-in
-
-Creates an EASY scala project, prepopulated with common files and structure. 
-
-see <http://maven.apache.org/archetype/maven-archetype-plugin>
-
-### Example usage
+Creates an EASY scala project, prepopulated with common files and structure. It uses the 
+[maven archetype plugin](http://maven.apache.org/archetype/maven-archetype-plugin).
 
 The archetype serves two purposes:
 
@@ -36,16 +31,18 @@ The archetype serves two purposes:
 
 [current common practices]: common-practices.md
 
-#### Generating a skeleton project with Maven
+### Example usage
 
-Using interactively retrieved parameters in the defaults of others does not currently seem feasible. The order in which the 
-parameters are asked from the user cannot be configured, and does not seem to follow any predictable pattern. That is why 
-some redundant information needs to be provided:
+Using interactively retrieved parameters in the defaults of other parameters does not currently seem feasible. For example,
+it would be nicer if the user only had to provide the `moduleSubpackage` and that it would be automatically appended to 
+`nl.knaw.dans.easy` to form the package name. However, the order in which the parameters are asked from the user cannot be configured, 
+and does not seem to follow any predictable pattern. That is why some redundant information needs to be provided, and user must
+ensure that it is consistent:
 
-* The `moduleSubpackage` parameter *must* be the last package in `package`.
+* The `moduleSubpackage` parameter *must* be the last package name in `package`.
 * The `javaName` parameter *must* be the `name` transformed into the format a Java class identifier (no spaces, capitals for the first letter of each word)
 
-      mvn archetype:generate \ 
+         mvn archetype:generate \ 
                 -DarchetypeGroupId=nl.knaw.dans.easy \
                 -DarchetypeArtifactId=easy-module-archetype \ 
                 -DarchetypeVersion=1.x-SNAPSHOT \
@@ -58,46 +55,56 @@ some redundant information needs to be provided:
 
 This will create a module called `easy-test-module`. 
 
-#### Generating the license headers
+### Initializing the project
 
-Execute `mvn license:format` in this module before you can successfully build it. This is due to the fact that the license headers
-are not included initially. The added benefit of including them in the template project would be minimal in any case, because as soon
-as you start adding source file you will need to generate new headers with the command mentioned above anyway.
+The archetype plugin does not take care of everything. That is why a helper script is provided, that will finish setting up the 
+project for you:
 
-#### Delete what you do not use
+    sh init-project.sh
+
+Note that you must type `sh` before the script name, as it is not by default executable. The script will generate license headers, build the project
+and make some other helper script executable. To find out what it does exactly, take a look at it!
+
+As a final step you should initialize a git project and have the project added to GitHub. I have left this out of `init-project.sh` as I am not sure if
+it could mess up your project if you accidentally run `init-project.sh` multiple times. Anyway, the command does not require much of you:
+
+    git init
+    
+Now, you are all set to start developing, except ...    
+
+### Delete what you do not use!
 
 The skeleton project contains stubs for a daemon with an HTTP interface and a command line application, and by the time you read this,
-possibly more stubs. It is important to delete the parts that you are not going to use, to avoid clutter. Yes, even if you may use it
+possibly more stubs. *It is important to delete the parts that you are not going to use*, to avoid clutter. Yes, even if you may use it
 in the future, just delete the stuff! For example: if you only need a command line application, you should delete
 
-* the daemon scripts in `src/main/assembly/bin`
-* the service-related classes
-* the `run-service` sub-command
-
-#### Build and test the skeleton project
- 
-After `mvn clean install` ...
-
-
+* the daemon scripts in `src/main/assembly/bin`,
+* the service-related classes,
+* the `run-service` sub-command,
+* maybe some other things as well: check!
 
 ARGUMENTS
 ----------
 
-* `-DgroupId`, -- the group ID for the new project. Defaults to `nl.knaw.dans.easy`.
-* `-DartifactId` -- the artifact ID for the new project. Use all-lower-case and dash-separated names, starting with `easy-`
-* `-Ddescription`, -- longer description for the new project
-* `-Dname`, -- long name for the new project
-* `-DmoduleSubpackage`, - the package under `nl.knaw.dans.easy` that is used by this project
-* `-Dversion`, -- defaults to **1.x-SNAPSHOT**
+Parameter                | Description / value
+-------------------------|-----------------------------------------------
+archetypeGroupId         | `nl.knaw.dans.easy`
+archetypeArtifactId      | `easy-module-archetype`  
+archetypeVersion         | The version of the archetype your want to use
+artifactId               | Archetype ID for your module `easy-<some name>`
+description              | Short description
+package                  | Main package of your module, must be directly under `nl.knaw.dans.easy`
+moduleSubpackage         | The last part o 
+name                     | Name of your project, capitalized title style, e.g. "My Test Module"
+javaName                 | The same as `name` but with no spaces: `MyTestModule`
+
+
 
 
 INSTALLATION AND CONFIGURATION
 ------------------------------
 
-### Installation steps:
-
-1. Unzip the tarball to a directory of your choice, e.g. /opt/
-2. A new directory called easy-module-archetype-<version> will be created
+No installation is needed if 
 
 
 BUILDING FROM SOURCE

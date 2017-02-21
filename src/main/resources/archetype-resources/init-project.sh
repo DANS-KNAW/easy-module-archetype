@@ -28,6 +28,7 @@ echo "Making helper scripts executable ..."
 chmod +x run.sh
 chmod +x run-service.sh
 chmod +x debug-reset-apphome.sh
+chmod +x src/main/ansible/*.sh
 
 echo "Resetting debug-config"
 ./debug-reset-apphome.sh

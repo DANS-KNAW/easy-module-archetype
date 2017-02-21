@@ -4,6 +4,8 @@
 # ansible-galaxy installed role from GitHub, which is automatically downloaded
 # when doing "vagrant up".
 
+mkdir `dirname $0`/roles/ 2> /dev/null
+
 ROLE1=dans.${artifactId}
 ROLE2=dans.easy-includes
 

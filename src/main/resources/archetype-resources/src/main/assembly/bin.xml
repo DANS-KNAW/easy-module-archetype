@@ -26,6 +26,8 @@
             <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>${artifactId}</include>
+                <include>${artifactId}-service-start</include>
+                <include>${artifactId}-init.sh</include>
             </includes>
             <fileMode>0755</fileMode>
         </fileSet>

@@ -1,6 +1,7 @@
-
-- hosts: "${artifactId}"
+- hosts: "test"
   become: yes
+  vars:
+    force_reinstalls: yes
   tasks:
   - name: Install standard software
     yum: name="{{ item }}"
@@ -20,11 +21,11 @@
 
   - name: Configure server name
     lineinfile: dest=/etc/httpd/conf/httpd.conf
-      line='ServerName ${artifactId}'
+      line='ServerName test'
       insertafter='^# ServerName.*$'
 
   - name: Add configuration for site
-    template: src=site-config.template dest=/etc/httpd/conf.d/${artifactId}.conf
+    template: src=site-config.template dest=/etc/httpd/conf.d/test.conf
 
   - include_role:
       name: dans.${artifactId}

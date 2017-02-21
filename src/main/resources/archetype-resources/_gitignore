@@ -17,6 +17,7 @@
 /home/
 /data/
 /data-*/
+/.vagrant/
 
 # Eclipse
 /.project

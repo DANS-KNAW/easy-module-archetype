@@ -11,8 +11,8 @@ case class CommandLineOptions(override val args: Seq[String], app: ${javaName}Ap
   printedName = "${artifactId}"
   private val _________ = " " * printedName.length
   private val SUBCOMMAND_SEPARATOR = "---\n"
-  val description = s"""${description}"""
-  val synopsis = s"""${symbol_dollar}printedName \\
+  val description: String = s"""${description}"""
+  val synopsis: String = s"""${symbol_dollar}printedName \\
            |      <synopsis of command line parameters> \\
            |      <...possibly continued again, or all joined on one line>""".stripMargin
 

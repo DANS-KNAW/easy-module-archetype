@@ -7,16 +7,16 @@ Generate a skeleton EASY Module.
 SYNOPSIS
 --------
 
-           mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
-                    -DarchetypeArtifactId=easy-module-archetype \
-                    -DarchetypeVersion=1.x-SNAPSHOT \
-                    -DgroupId=nl.knaw.dans.easy \
-                    -DartifactId=easy-module \
-                    -Dpackage=nl.knaw.dans.easy.module \
-                    -DmoduleSubpackage=module \
-                    -Dname="EASY Module" \
-                    -DjavaName="EasyModule" \
-                    -Ddescription="A longer description of this module"
+       mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
+                -DarchetypeArtifactId=easy-module-archetype \
+                -DarchetypeVersion=1.x-SNAPSHOT \
+                -DgroupId=nl.knaw.dans.easy \
+                -DartifactId=easy-module \
+                -Dpackage=nl.knaw.dans.easy.module \
+                -DmoduleSubpackage=module \
+                -Dname="EASY Module" \
+                -DjavaName="EasyModule" \
+                -Ddescription="A longer description of this module"
 
 DESCRIPTION
 -----------

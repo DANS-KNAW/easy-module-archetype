@@ -15,8 +15,9 @@
 # limitations under the License.
 #
 
-echo "Setting .gitignore"
+echo "Setting .gitignores"
 mv _gitignore .gitignore
+mv src/main/ansible/_gitignore src/main/ansible/.gitignore
 
 echo "Building ..."
 mvn license:format clean install

@@ -2,10 +2,9 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8" ?>
-<assembly
-    xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
     <id>bin</id>
     <baseDirectory>${symbol_dollar}{artifactId}-${symbol_dollar}{version}</baseDirectory>
     <formats>
@@ -14,7 +13,7 @@
     <fileSets>
         <fileSet>
             <directory>${symbol_dollar}{project.build.directory}</directory>
-            <outputDirectory>/bin</outputDirectory>
+            <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>*.jar</include>
             </includes>
@@ -24,28 +23,27 @@
         </fileSet>
         <fileSet>
             <directory>${symbol_dollar}{project.basedir}/src/main/assembly/dist/bin</directory>
-            <outputDirectory>/bin</outputDirectory>
+            <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>${artifactId}</include>
             </includes>
             <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
-            <directory>${symbol_dollar}{project.basedir}/src/main/assembly/dist/</directory>
-            <outputDirectory>/bin</outputDirectory>
-            <includes>
-                <include>version</include>
-            </includes>
-            <fileMode>0444</fileMode>
-        </fileSet>
-        <fileSet>
             <directory>${symbol_dollar}{project.basedir}/src/main/assembly/dist</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory></outputDirectory>
             <excludes>
-                <exclude>/bin</exclude>
+                <exclude>bin</exclude>
             </excludes>
         </fileSet>
     </fileSets>
+    <files>
+        <file>
+            <source>${symbol_dollar}{project.basedir}/src/main/assembly/dist/version</source>
+            <outputDirectory></outputDirectory>
+            <filtered>true</filtered>
+        </file>
+    </files>
     <dependencySets>
         <dependencySet>
             <outputDirectory>lib</outputDirectory>

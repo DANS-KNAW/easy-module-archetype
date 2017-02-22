@@ -8,6 +8,7 @@
     with_items:
       - java-1.8.0-openjdk
       - httpd
+      - libselinux-python
       - libsemanage-python
 
   - name: Enable Apache HTTP Server

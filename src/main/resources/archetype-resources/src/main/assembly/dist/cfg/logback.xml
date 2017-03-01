@@ -7,7 +7,7 @@
 			  class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${symbol_dollar}{user.home}/${artifactId}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${symbol_dollar}{user.home}/easy-bag-store.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>${symbol_dollar}{user.home}/${artifactId}.%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>

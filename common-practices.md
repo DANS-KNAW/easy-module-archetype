@@ -6,7 +6,12 @@ Code Style
 * Use one directory for all the packages from the `nl` package down to the top-level package
   for the project, for example `nl.knaw.dans.easy.mymodule` should be a directory (with dots
   in its name). Sub-packages of `mymodule` should be one directory per package (Java-style).
+  *(Rationale: easier to navigate when using tools with no support for Java packagges, e.g.,
+   when working from the command line. Also, the packages `nl` through `easy` are never used
+   to contain resources directly.)*
 * Use the code formatting settings as specified in ... (to be provided).
+  *(Rationale: too much variation in code formatting distracts from the code logic
+   (or lack thereof ;-). Git diffs only show relevant changes in code text)*
 
 Resource Management
 -------------------
@@ -17,7 +22,65 @@ Resource Management
 * Use the `scala-arm` library to ensure that resources are closed, instead of doing it
   manually (e.g., in `finally` blocks).
   
+Testing
+-------
+* We use the following predefined testing levels. Each test should belong clearly
+  under one of these. For each level we have or will develop common practices.
+    - Unit tests (test one function)
+    - Service- and consumer tests
+    - End-to-end tests
+* Prefer unit tests (single function) over service test (exercises the whole service)
+* Do not let some side effect of your unit test, such as artifacts produced, drive their
+  development. *(Rationale: unit tests must be small in scope, coherent and clear, so that
+  they are easily evolved in tandem with the code they test. Small in scope means they
+  depend on little else than the code under test, but also that other thing do not
+  depend on them.)*
+* Every unit test must copy and process any file data it uses to the directory `target/test/<test-simple-classname>`
+  *(Rationale: this convention makes it easier to find the data, when debugging the unit tests)*
+* Every unit test must start with a clean slate, even if this means copying the same files multiple times.
+  *(Rationale: the extra time spend copying the files will be marginal, while it makes it much easier to
+  comprehend what is going on in a specific test)*
   
+Debugging
+---------
+* 
+  
+  
+Packaging and Installation
+--------------------------
+*To be implemented*
+
+* Each module must be packaged as an RPM. Additionally it
+  may also be packaged as a `tar.gz` file.
+* The RPM must contain correct metadata, and particularly all its dependencies.
+* The RPM must create all the databases and other resources that the module needs
+  to function. 
+* The RPM should come with reasonable defaults, and *if possible* install the module
+  in a state where it will work without any further configuration. It *must not* however
+  contain any DANS specific configuration settings.
+* When the package is removed, the RPM should remove all the resources that can safely
+  be removed. It should leave resources that could possibly be needed after uninstall,
+  such as log files, databases and system users (in most cases).
+* The RPM must be able to upgrade from the previous version, it may fail when trying to 
+  upgrade skipping versions.
+  
+Documentation
+-------------
+* Each module should have a `README.md` file with the following sections. The ones
+  marked with (*) are mandatory.
+    - Title and short description, build status link to tracis-ci. (*)
+    - SYNOPSIS (*)
+    - DESCRIPTION (*)
+    - ARGUMENTS (*)
+    - EXAMPLES
+    - INSTALLATION AND CONFIGURATION (*)
+    - DEVELOPMENT
+* Sections that become too big should refer to other documentation pages, also located
+  in the root of the project, and marked up in markdown.
+* For command line applications ARGUMENTS must contain exactly the output of the 
+  arguments as displayed by the `--help` option. This correspondence should be checked
+  by a unit test.
+
   
 
   

@@ -15,22 +15,22 @@
 # limitations under the License.
 #
 
-echo "Setting .gitignores"
+echo Setting .gitignores
 mv _gitignore .gitignore
 mv src/main/ansible/_gitignore src/main/ansible/.gitignore
 
-echo "Building ..."
-mvn license:format clean install
+echo Building ...
+mvn initialize license:format clean install
 
 echo "Removing unnecessary directory nesting in scala source code ..."
 
-echo "Making helper scripts executable ..."
+echo Making helper scripts executable ...
 chmod +x run.sh
 chmod +x run-service.sh
 chmod +x debug-reset-apphome.sh
 chmod +x src/main/ansible/*.sh
 
-echo "Resetting debug-config"
+echo Resetting debug-config
 ./debug-reset-apphome.sh
 
 echo "Done. You may now remove this script; it is of no further use."

@@ -19,7 +19,7 @@ EXEC="/usr/bin/jsvc"
 APPHOME="/usr/local/${artifactId}"
 JAVA_HOME="/usr/lib/jvm/jre"
 CLASSPATH="${symbol_dollar}APPHOME/bin/${symbol_dollar}NAME.jar:`echo ${symbol_dollar}APPHOME/lib/*.jar | sed 's/ /:/g'`"
-CLASS="nl.knaw.dans.easy.${artifactId}.ServiceStarter"
+CLASS="${package}.ServiceStarter"
 ARGS=""
 USER="${artifactId}"
 PID="/var/run/${symbol_dollar}NAME.pid"
@@ -30,6 +30,7 @@ WAIT_TIME=60
 jsvc_exec()
 {
     cd ${symbol_dollar}{APPHOME}
+    LC_ALL=en_US.UTF-8 \
     ${symbol_dollar}{EXEC} -home ${symbol_dollar}{JAVA_HOME} -cp ${symbol_dollar}{CLASSPATH} -user ${symbol_dollar}{USER} -outfile ${symbol_dollar}{OUTFILE} -errfile ${symbol_dollar}{ERRFILE} -pidfile ${symbol_dollar}{PID} -wait ${symbol_dollar}{WAIT_TIME} \
           -Dapp.home=${symbol_dollar}{APPHOME} -Dconfig.file=${symbol_dollar}{APPHOME}/cfg/application.conf \
           -Dlogback.configurationFile=${symbol_dollar}{APPHOME}/cfg/logback-service.xml ${symbol_dollar}1 ${symbol_dollar}{CLASS} ${symbol_dollar}{ARGS}

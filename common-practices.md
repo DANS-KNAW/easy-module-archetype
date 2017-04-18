@@ -32,8 +32,8 @@ Testing
 * Prefer unit tests (single function) over service test (exercises the whole service)
 * Do not let some side effect of your unit test, such as artifacts produced, drive their
   development. *(Rationale: unit tests must be small in scope, coherent and clear, so that
-  they are easily evolved in tandem with the code they test. Small in scope means they
-  depend on little else than the code under test, but also that other thing do not
+  they are easily evolved in tandem with the code they test. "Small in scope" means they
+  depend on little else than the code under test, but also that other things do not
   depend on them.)*
 * Every unit test must copy and process any file data it uses to the directory `target/test/<test-simple-classname>`.
   An exception can be made if the unit test only reads and does not write *any* data.
@@ -42,7 +42,7 @@ Testing
   trade-off needs to be made here. Input data in the source code makes it more readily available when
   reading the test, but if the input is very large it may obscure the test logic.
 * Every unit test must start with a clean slate, even if this means copying the same files multiple times.
-  *(Rationale: the extra time spend copying the files will be marginal, while it makes it much easier to
+  *(Rationale: the extra time spent copying the files will be marginal, while it makes it much easier to
   comprehend what is going on in a specific test)*
 * Do clean-up at the start of the test and not at the end. *(Rationale: when running individual
   unit tests it is then easier to diagnose problems. Since all the data is put under `target` a

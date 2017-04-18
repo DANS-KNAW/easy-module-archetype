@@ -21,6 +21,12 @@ Resource Management
   them at the last possible moment.
 * Use the `scala-arm` library to ensure that resources are closed, instead of doing it
   manually (e.g., in `finally` blocks).
+* Save text content (including XML) as UTF-8 encoded. Use the [StandardCharsets constant] for this, rather than
+  a magic string.
+* Do not assume that XML is UTF-8 encoded, but instead let the parser use the `encoding` attribute
+  in the XML prolog.
+
+[StandardCharsets constant]: https://docs.oracle.com/javase/8/docs/api/java/nio/charset/StandardCharsets.html#UTF_8
   
 Testing
 -------

@@ -15,22 +15,27 @@
 # limitations under the License.
 #
 
-echo "Setting .gitignores"
+echo Setting .gitignores
 mv _gitignore .gitignore
 mv src/main/ansible/_gitignore src/main/ansible/.gitignore
 
-echo "Building ..."
-mvn license:format clean install
-
 echo "Removing unnecessary directory nesting in scala source code ..."
+mv src/main/scala/nl/knaw/dans/easy/${moduleSubpackage} src/main/scala/${package}
+rm -fr src/main/scala/nl
+mv src/test/scala/nl/knaw/dans/easy/${moduleSubpackage} src/test/scala/${package}
+rm -fr src/test/scala/nl
 
-echo "Making helper scripts executable ..."
+echo Building ...
+mvn initialize license:format clean install
+
+echo Making helper scripts executable ...
 chmod +x run.sh
 chmod +x run-service.sh
+chmod +x run-wait.sh
 chmod +x debug-reset-apphome.sh
 chmod +x src/main/ansible/*.sh
 
-echo "Resetting debug-config"
+echo Resetting debug-config
 ./debug-reset-apphome.sh
 
-echo "Done. You may now remove this script; it is of no further use."
+echo "Done. You may now remove this script - it is of no further use."

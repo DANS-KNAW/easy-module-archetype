@@ -21,3 +21,6 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
         -Dname="$MODULE_NAME" \
         -DjavaName="$MODULE_JAVA_NAME" \
         -Ddescription="$DESCRIPTION"
+
+cd $ARTIFACT_ID
+sh init-project.sh

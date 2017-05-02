@@ -4,7 +4,7 @@
     <parent>
         <groupId>nl.knaw.dans.shared</groupId>
         <artifactId>dans-scala-prototype</artifactId>
-        <version>1.43</version>
+        <version>1.44</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>${groupId}</groupId>
@@ -124,6 +124,10 @@
             <plugin>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

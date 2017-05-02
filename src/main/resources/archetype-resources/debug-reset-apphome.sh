@@ -15,5 +15,3 @@ touch $TEMPDIR/${artifactId}.log
 
 echo "A fresh application home directory for debugging has been set up at $APPHOME"
 echo "Output and logging will go to $TEMPDIR"
-echo "Add the following VM options to your run configuration to use these directories during debugging:"
-echo "-Dapp.home=$APPHOME -Dlogback.configurationFile=$APPHOME/cfg/logback.xml"

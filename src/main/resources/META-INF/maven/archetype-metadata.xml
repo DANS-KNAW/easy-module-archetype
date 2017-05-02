@@ -1,71 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archetype-descriptor
-	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
-	name="easy-module-template"
-	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<requiredProperties>
-        <requiredProperty key="artifactId" />
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+        name="easy-module-template"
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <requiredProperties>
+        <requiredProperty key="artifactId"/>
         <requiredProperty key="description"/>
-		<requiredProperty key="groupId">
-			<defaultValue>nl.knaw.dans.easy</defaultValue>
-		</requiredProperty>
-        <requiredProperty key="moduleSubpackage" />
-        <requiredProperty key="name" />
-        <requiredProperty key="package" />
+        <requiredProperty key="groupId">
+            <defaultValue>nl.knaw.dans.easy</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="moduleSubpackage"/>
+        <requiredProperty key="name"/>
+        <requiredProperty key="package"/>
         <requiredProperty key="version">
             <defaultValue>1.x-SNAPSHOT</defaultValue>
         </requiredProperty>
-		<requiredProperty key="javaName" />
-	</requiredProperties>
-	<fileSets>
-		<fileSet filtered="true" packaged="true" encoding="UTF-8">
-			<directory>src/main/scala/</directory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/main/assembly</directory>
-			<includes>
-				<include>**/**</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/main/ansible</directory>
-			<includes>
-				<include>**/**</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" packaged="true" encoding="UTF-8">
-			<directory>src/test/scala</directory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="false" encoding="UTF-8">
-			<directory>src/test/resources</directory>
-			<includes>
-				<include>*</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/test/resources/debug-config</directory>
-			<includes>
-				<include>**/**</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="false" encoding="UTF-8">
-			<directory>.github</directory>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory></directory>
-			<includes>
-				<include>*</include>
-			</includes>
+        <requiredProperty key="javaName"/>
+    </requiredProperties>
+    <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/scala/</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>src/main/rpm/</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/assembly</directory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/ansible</directory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/test/scala</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>src/test/resources</directory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/test/resources/debug-config</directory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>.github</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>*</include>
+            </includes>
             <excludes>
                 <exclude>pom.xml</exclude>
             </excludes>
-		</fileSet>
-	</fileSets>
+        </fileSet>
+    </fileSets>
 </archetype-descriptor>

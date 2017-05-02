@@ -31,7 +31,8 @@ ARGUMENTS
         --help   Show help message
     ---
 
-### Example usage
+EXAMPLES
+--------
 
     ${artifactId} -o value
 

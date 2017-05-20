@@ -1,20 +1,23 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 #!/usr/bin/env bash
 
-BINPATH=`readlink -f $0`
-APPHOME=`dirname \`dirname $BINPATH \``
-MODULE=`basename $APPHOME`
-LOGBACK_HOME=$HOME/logback.xml
-LOGBACK_RPM=/etc/opt/dans.knaw.nl/$MODULE/logback.xml
-LOGBACK_APPHOME=$APPHOME/cfg/logback.xml
+BINPATH=`readlink -f ${symbol_dollar}0`
+APPHOME=`dirname \`dirname ${symbol_dollar}BINPATH \``
+MODULE=`basename ${symbol_dollar}APPHOME`
+LOGBACK_HOME=${symbol_dollar}HOME/logback.xml
+LOGBACK_RPM=/etc/opt/dans.knaw.nl/${symbol_dollar}MODULE/logback.xml
+LOGBACK_APPHOME=${symbol_dollar}APPHOME/cfg/logback.xml
 
-if [ -f $LOGBACK_HOME ]; then
-    LOGBACK_CFG=$LOGBACK_HOME
-elif [ -f $LOGBACK_RPM ]; then
-    LOGBACK_CFG=$LOGBACK_RPM
+if [ -f ${symbol_dollar}LOGBACK_HOME ]; then
+    LOGBACK_CFG=${symbol_dollar}LOGBACK_HOME
+elif [ -f ${symbol_dollar}LOGBACK_RPM ]; then
+    LOGBACK_CFG=${symbol_dollar}LOGBACK_RPM
 else
-    LOGBACK_CFG=$LOGBACK_APPHOME
+    LOGBACK_CFG=${symbol_dollar}LOGBACK_APPHOME
 fi
 
-java -Dlogback.configurationFile=$LOGBACK_CFG \
-     -Dapp.home=$APPHOME \
-     -jar $APPHOME/bin/easy-test.jar $@
+java -Dlogback.configurationFile=${symbol_dollar}LOGBACK_CFG \
+     -Dapp.home=${symbol_dollar}APPHOME \
+     -jar ${symbol_dollar}APPHOME/bin/${artifactId}.jar ${symbol_dollar}@

@@ -32,3 +32,9 @@
 
   - name: Reload Apache HTTP Server
     service: name=httpd state=reloaded
+
+  - name: Add /opt/bin to PATH
+    copy:
+      src: opt.sh
+      dest: /etc/profile.d/
+      mode: "755"

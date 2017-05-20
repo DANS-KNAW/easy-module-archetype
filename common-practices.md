@@ -90,7 +90,7 @@ Documentation
 * Each module should have a `README.md` file with the following sections. The ones
   marked with (*) are mandatory.
     - Title and short description, build status link to tracis-ci. (*)
-    - SYNOPSIS (*)
+    - SYNOPSIS (*) <!-- TODO: add conventions for how to display arguments, options and subcommands -->
     - DESCRIPTION (*)
     - ARGUMENTS (*)
     - EXAMPLES

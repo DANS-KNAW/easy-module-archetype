@@ -13,7 +13,7 @@ trait ${javaName}App {
   // extends ...
   // with ...
   // Mix in the traits that provided the application's functionality
-  private val home = Paths.get(System.getProperty("app.home"))
+  private val cfg = Paths.get(System.getProperty("app.cfg"))
   val version: String = resource.managed(scala.io.Source.fromFile(home.resolve("version").toFile)).acquireAndGet {
     _.mkString
   }

@@ -18,6 +18,7 @@
 /data/
 /data-*/
 /.vagrant/
+/.yum-repo
 
 # Eclipse
 /.project

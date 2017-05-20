@@ -38,3 +38,24 @@
       src: opt.sh
       dest: /etc/profile.d/
       mode: "755"
+
+#
+# Uncomment the following two tasks, after building the rpm, to install it on the test vm
+#
+
+#  - include: yum-repo.yml
+#
+#  - name: Installing package
+#    yum:
+#      name: dans.knaw.nl-${artifactId}
+#      state: latest
+#
+
+#
+# Uncomment the following task to start and enable the service, if this module contains a daemon.
+#
+
+#  - service:
+#      name: ${artifactId}
+#      state: started
+#      enabled: yes

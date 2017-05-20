@@ -128,6 +128,13 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>rpm-maven-plugin</artifactId>
+                <!-- jsvc only necessary for initd services ! -->
+                <configuration>
+                    <group>Applications/Archiving</group>
+                    <requires combine.children="append">
+                        <require>jsvc</require>
+                    </requires>
+                </configuration>
             </plugin>
         </plugins>
     </build>

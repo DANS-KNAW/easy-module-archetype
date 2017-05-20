@@ -16,24 +16,29 @@
 
 NAME="${artifactId}"
 EXEC="/usr/bin/jsvc"
-APPHOME="/usr/local/${artifactId}"
+APPHOME="/opt/dans.knaw.nl/${symbol_dollar}NAME"
 JAVA_HOME="/usr/lib/jvm/jre"
 CLASSPATH="${symbol_dollar}APPHOME/bin/${symbol_dollar}NAME.jar:`echo ${symbol_dollar}APPHOME/lib/*.jar | sed 's/ /:/g'`"
 CLASS="${package}.ServiceStarter"
 ARGS=""
-USER="${artifactId}"
+USER="${symbol_dollar}NAME"
 PID="/var/run/${symbol_dollar}NAME.pid"
-OUTFILE="/var/log/${symbol_dollar}NAME/${symbol_dollar}NAME.out"
-ERRFILE="/var/log/${symbol_dollar}NAME/${symbol_dollar}NAME.err"
+OUTFILE="/var/opt/dans.knaw.nl/log/${symbol_dollar}NAME/${symbol_dollar}NAME.out"
+ERRFILE="/var/opt/dans.knaw.nl/log/${symbol_dollar}NAME/${symbol_dollar}NAME.err"
 WAIT_TIME=60
 
 jsvc_exec()
 {
     cd ${symbol_dollar}{APPHOME}
+    LOGBACK_CFG=/etc/opt/dans.knaw.nl/${symbol_dollar}NAME/logback-service.xml
+    if [ ! -f ${symbol_dollar}LOGBACK_CFG ]; then
+        LOGBACK_CFG=${symbol_dollar}APPHOME/cfg/logback-service.xml
+    fi
+
     LC_ALL=en_US.UTF-8 \
     ${symbol_dollar}{EXEC} -home ${symbol_dollar}{JAVA_HOME} -cp ${symbol_dollar}{CLASSPATH} -user ${symbol_dollar}{USER} -outfile ${symbol_dollar}{OUTFILE} -errfile ${symbol_dollar}{ERRFILE} -pidfile ${symbol_dollar}{PID} -wait ${symbol_dollar}{WAIT_TIME} \
-          -Dapp.home=${symbol_dollar}{APPHOME} -Dconfig.file=${symbol_dollar}{APPHOME}/cfg/application.conf \
-          -Dlogback.configurationFile=${symbol_dollar}{APPHOME}/cfg/logback-service.xml ${symbol_dollar}1 ${symbol_dollar}{CLASS} ${symbol_dollar}{ARGS}
+          -Dapp.home=${symbol_dollar}{APPHOME} \
+          -Dlogback.configurationFile=${symbol_dollar}LOGBACK_CFG ${symbol_dollar}1 ${symbol_dollar}{CLASS} ${symbol_dollar}{ARGS}
 }
 
 start_jsvc_exec()

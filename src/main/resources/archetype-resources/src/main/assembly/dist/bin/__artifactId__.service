@@ -2,7 +2,7 @@
 Description=${name} Service
 
 [Service]
-ExecStart=/usr/local/${artifactId}/bin/${artifactId}-service-start
+ExecStart=/opt/dans.knaw.nl/${artifactId}/bin/${artifactId}-service-start
 
 User=${artifactId}
 Group=${artifactId}

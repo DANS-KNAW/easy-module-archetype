@@ -1,18 +1,20 @@
 - hosts: "test"
   become: yes
-  vars:
-    force_reinstalls: yes
   tasks:
   - name: Install standard software
     yum: name="{{ item }}"
     with_items:
-      - java-1.8.0-openjdk
       - httpd
       - libselinux-python
       - libsemanage-python
 
   - name: Enable Apache HTTP Server
     service: name=httpd enabled=true state=started
+
+  - name: Enable SELinux
+    selinux:
+       policy: targeted
+       state: enforcing
 
   - name: Allow Apache HTTP Server to call back-end service
     seboolean:
@@ -27,10 +29,6 @@
 
   - name: Add configuration for site
     template: src=site-config.template dest=/etc/httpd/conf.d/test.conf
-
-  - include_role:
-      name: dans.${artifactId}
-      tasks_from: install.yml
 
   - name: Reload Apache HTTP Server
     service: name=httpd state=reloaded

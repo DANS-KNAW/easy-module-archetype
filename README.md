@@ -7,16 +7,7 @@ Generate a skeleton EASY Module.
 SYNOPSIS
 --------
 
-       mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
-                -DarchetypeArtifactId=easy-module-archetype \
-                -DarchetypeVersion=1.x-SNAPSHOT \
-                -DgroupId=nl.knaw.dans.easy \
-                -DartifactId=easy-module \
-                -Dpackage=nl.knaw.dans.easy.module \
-                -DmoduleSubpackage=module \
-                -Dname="EASY Module" \
-                -DjavaName="EasyModule" \
-                -Ddescription="A longer description of this module"
+       generate-easy-module.sh
 
 DESCRIPTION
 -----------
@@ -33,27 +24,36 @@ The archetype serves two purposes:
 
 ### Example usage
 
-Using interactively retrieved parameters in the defaults of other parameters does not currently seem feasible. For example,
-it would be nicer if the user only had to provide the `moduleSubpackage` and that it would be automatically appended to 
-`nl.knaw.dans.easy` to form the package name. However, the order in which the parameters are asked from the user cannot be configured, 
-and does not seem to follow any predictable pattern. That is why some redundant information needs to be provided, and user must
-ensure that it is consistent:
+This assumes that you have copied the `generate-easy-module.sh` script to a directory that is on your `$PATH`. On
+the Mac that could be `/usr/local/bin`
 
-* The `moduleSubpackage` parameter *must* be the last package name in `package`.
-* The `javaName` parameter *must* be the `name` transformed into the format a Java class identifier (no spaces, capitals for the first letter of each word)
+    $ cd ~/git/my-test-projects
+    $ generate-easy-module.sh
+    > easy-module-archetype version? (default = 1.x-SNAPSHOT): [Enter]
+    > Module artifactId (e.g., easy-test-module): easy-hello-world [Enter]
+    > Name module's main package (i.e. the one under nl.knaw.dans.easy): hello [Enter]
+    > Description (one to four sentences): Simple example \ [Enter]
+      that demonstrates that this generation script works. [Enter]
+    > [INFO] Scanning for projects...
+      [INFO]
+      [INFO] ------------------------------------------------------------------------
+      [INFO] Building Maven Stub Project (No POM) 1
+      [INFO] ------------------------------------------------------------------------
+      ... <more output>
+      Confirm properties configuration:
+      groupId: nl.knaw.dans.easy
+      artifactId: easy-hello-world
+      version: 1.x-SNAPSHOT
+      package: nl.knaw.dans.easy.hello
+      description: Simple example that demonstrates that this generation script works.
+      javaName: EasyHelloWorld
+      moduleSubpackage: hello
+      name: EASY Hello World
+       Y: : [Enter]
+    > ... <more output>
+      
+    
 
-         mvn archetype:generate \ 
-                -DarchetypeGroupId=nl.knaw.dans.easy \
-                -DarchetypeArtifactId=easy-module-archetype \ 
-                -DarchetypeVersion=1.x-SNAPSHOT \
-                -DartifactId=easy-test-module \
-                -Ddescription="A test module" \
-                -Dpackage=nl.knaw.dans.easy.test \
-                -Dname="Module Test"
-                -DjavaName="ModuleTest" \
-                -DmoduleSubpackage=test
-
-This will create a module called `easy-test-module`. 
 
 ### Initializing the project
 

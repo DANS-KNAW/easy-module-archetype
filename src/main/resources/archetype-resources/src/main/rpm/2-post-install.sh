@@ -16,7 +16,7 @@ echo "POST-INSTALL: START (Number of current installations: ${symbol_dollar}NUMB
 if [ -d ${symbol_dollar}INITD_SCRIPTS_DIR ]; then
     echo -n "Installing initd service script... "
     cp ${symbol_dollar}INSTALL_DIR/bin/${symbol_dollar}{MODULE_NAME}-initd.sh ${symbol_dollar}INITD_SCRIPTS_DIR/${symbol_dollar}MODULE_NAME
-    chmod o+x ${symbol_dollar}INITD_SCRIPTS_DIR/${symbol_dollar}MODULE_NAME
+    chmod u+x ${symbol_dollar}INITD_SCRIPTS_DIR/${symbol_dollar}MODULE_NAME
     echo "OK"
 fi
 

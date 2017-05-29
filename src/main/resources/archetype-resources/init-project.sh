@@ -25,11 +25,7 @@ mv src/test/scala/nl/knaw/dans/easy/${moduleSubpackage} src/test/scala/${package
 rm -fr src/test/scala/nl
 
 echo Making helper scripts executable...
-chmod +x run.sh
-chmod +x run-service.sh
-chmod +x run-wait.sh
-chmod +x debug-reset-apphome.sh
-chmod +x src/main/ansible/*.sh
+chmod +x *.sh
 
 echo Resetting debug-config...
 ./debug-reset-apphome.sh

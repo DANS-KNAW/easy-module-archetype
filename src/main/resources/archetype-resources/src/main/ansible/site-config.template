@@ -6,7 +6,7 @@
   ProxyTimeout 600
 
   <Location / >
-    ProxyPass ajp://localhost:20001/
-    ProxyPassReverse ajp://localhost:20001/
+    ProxyPass http://localhost:20000/
+    ProxyPassReverse http://localhost:20000/
   </Location>
 </VirtualHost>

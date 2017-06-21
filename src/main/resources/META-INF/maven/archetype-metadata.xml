@@ -14,7 +14,7 @@
         <requiredProperty key="name"/>
         <requiredProperty key="package"/>
         <requiredProperty key="version">
-            <defaultValue>1.x-SNAPSHOT</defaultValue>
+            <defaultValue>1.0.0-SNAPSHOT</defaultValue>
         </requiredProperty>
         <requiredProperty key="javaName"/>
     </requiredProperties>

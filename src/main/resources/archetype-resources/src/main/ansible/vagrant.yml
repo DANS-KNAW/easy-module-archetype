@@ -39,32 +39,14 @@
       dest: /etc/profile.d/
       mode: "755"
 
-#
-# Uncomment the following two tasks, after building the rpm, to install it on the test vm
-#
+  - include: yum-repo.yml
 
-#  - include: yum-repo.yml
-#
-#  - name: Installing package
-#    yum:
-#      name: dans.knaw.nl-${artifactId}
-#      state: latest
-#
+  - name: Installing package
+    yum:
+      name: dans.knaw.nl-${artifactId}
+      state: latest
 
-
-#     Using command to upgrade as a work-around, as the yum module has a bug with "state: latest" in 2.2.1.0
-#     Should be fixed in 2.3. See: https://github.com/ansible/ansible-modules-core/commit/e28cea7e0520f8d1b81e57a9951d55a4feb3e34b
-#
-#  - name: Upgrading package
-#    command: yum upgrade -y dans.knaw.nl-easy-bag-store
-#
-
-
-#
-# Uncomment the following task to start and enable the service, if this module contains a daemon.
-#
-
-#  - service:
-#      name: ${artifactId}
-#      state: started
-#      enabled: yes
+  - service:
+      name: ${artifactId}
+      state: started
+      enabled: yes

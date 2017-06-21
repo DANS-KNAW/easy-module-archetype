@@ -18,6 +18,7 @@ else
     LOGBACK_CFG=${symbol_dollar}LOGBACK_APPHOME
 fi
 
+LC_ALL=en_US.UTF-8 \
 java -Dlogback.configurationFile=${symbol_dollar}LOGBACK_CFG \
      -Dapp.home=${symbol_dollar}APPHOME \
-     -jar ${symbol_dollar}APPHOME/bin/${artifactId}.jar ${symbol_dollar}@
+     -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}MODULE.jar ${symbol_dollar}@

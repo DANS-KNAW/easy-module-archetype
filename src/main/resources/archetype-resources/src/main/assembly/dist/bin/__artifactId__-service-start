@@ -9,7 +9,8 @@ if [ ! -f $LOGBACK_CFG ]; then
     LOGBACK_CFG=$APPHOME/cfg/logback-service.xml
 fi
 
+LC_ALL=en_US.UTF-8 \
 java -Dlogback.configurationFile=$LOGBACK_CFG \
      -Dapp.home=$APPHOME \
      -server \
-     -jar $APPHOME/bin/easy-test.jar run-service
+     -jar $APPHOME/bin/$MODULE.jar run-service

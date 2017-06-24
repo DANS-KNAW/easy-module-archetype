@@ -32,7 +32,7 @@ The archetype serves two purposes:
       by Maven contain the configuration keys that are expected by the program.
 * Stub assembly resources:
     - Command line starter script, `initd` and `systemd` scripts.
-    - Configuration files (`applictation.properties` and separated logback config files for command line
+    - Configuration files (`application.properties` and separate logback config files for command line
       and daemon execution.)
     - Assembly descriptor for the `tar.gz` archive.
 * Stub RPM configuration:

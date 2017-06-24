@@ -39,7 +39,8 @@
       dest: /etc/profile.d/
       mode: "755"
 
-  - include: yum-repo.yml
+  - include_role:
+      name: yum-repo
 
   - name: Installing package
     yum:

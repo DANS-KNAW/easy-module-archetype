@@ -111,10 +111,10 @@ Documentation
             <trail> <trail2> <trail3>...
       ```
       In short:
-        - Options described by *short-name*, *long-name* and *<arg>*. The long name should be suffciently clear, so that a
+        - Options described by *short-name*, *long-name* and *`<arg>`*. The long name should be sufficiently clear, so that a
           generic `<arg>` suffices. For booleans `<arg>` should of course be left out.
         - Options should always be optional, meaning they have a reasonable default.
-        - trailing arguments should be meaningful, for example *<input-directory>*, etc. 
+        - trailing arguments should be meaningful, for example *`<input-directory>`*, etc. 
         - Mutually exclusive options should be grouped in braces.
         - Repeating trailing arguments indicated with an ellipsis glued to the end of the repeating argument.
     - DESCRIPTION (*)

@@ -7,9 +7,14 @@
       - httpd
       - libselinux-python
       - libsemanage-python
+      - tree
+      - tmux
 
   - name: Enable Apache HTTP Server
-    service: name=httpd enabled=true state=started
+    service:
+      name: httpd
+      enabled: yes
+      state: started
 
   - name: Enable SELinux
     selinux:
@@ -23,15 +28,20 @@
       persistent: yes
 
   - name: Configure server name
-    lineinfile: dest=/etc/httpd/conf/httpd.conf
-      line='ServerName test'
-      insertafter='^# ServerName.*$'
+    lineinfile:
+      dest: "/etc/httpd/conf/httpd.conf"
+      line: 'ServerName test'
+      insertafter: '^#\s?ServerName.*80$'
 
   - name: Add configuration for site
-    template: src=site-config.template dest=/etc/httpd/conf.d/test.conf
+    copy:
+      src: "test.conf"
+      dest: "/etc/httpd/conf.d/"
 
   - name: Reload Apache HTTP Server
-    service: name=httpd state=reloaded
+    service:
+      name: httpd
+      state: reloaded
 
   - name: Add /opt/bin to PATH
     copy:

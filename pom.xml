@@ -3,12 +3,12 @@
     <parent>
         <groupId>nl.knaw.dans.shared</groupId>
         <artifactId>dans-prototype</artifactId>
-        <version>1.43</version>
+        <version>1.45</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-module-archetype</artifactId>
-    <version>1.x-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
     <name>EASY Module Archetype</name>
     <description>Maven archetype for creating an EASY module.</description>

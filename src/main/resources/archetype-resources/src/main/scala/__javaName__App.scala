@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}
 
-import java.nio.file.Paths
+import java.nio.file.{ Files, Paths }
 
 import org.apache.commons.configuration.PropertiesConfiguration
 
@@ -14,11 +14,14 @@ trait ${javaName}App {
   // with ...
   // Mix in the traits that provided the application's functionality
   private val home = Paths.get(System.getProperty("app.home"))
-  val version: String = resource.managed(scala.io.Source.fromFile(home.resolve("version").toFile)).acquireAndGet {
+  private val cfg = Seq(
+    Paths.get(s"/etc/opt/dans.knaw.nl/${artifactId}/"),
+    home.resolve("cfg")).find(Files.exists(_)).getOrElse { throw new IllegalStateException("No configuration directory found")}
+
+  val version: String = resource.managed(scala.io.Source.fromFile(home.resolve("bin/version").toFile)).acquireAndGet {
     _.mkString
   }
-  val properties = new PropertiesConfiguration(home.resolve("cfg/application.properties").toFile)
-
+  val properties = new PropertiesConfiguration(cfg.resolve("application.properties").toFile)
 
   // Fill the fields required by the traits mixed in above
   // val settingForTraitX = properties.getString("setting.x")

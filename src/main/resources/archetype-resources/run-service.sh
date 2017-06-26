@@ -4,6 +4,7 @@ APPHOME=home
 ARGS=run-service
 
 MAVEN_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n" \
+LC_ALL=en_US.UTF-8 \
 mvn exec:java -Dapp.home=$APPHOME \
               -Dexec.args="$ARGS" \
               -Dlogback.configurationFile=$APPHOME/cfg/logback-service.xml \

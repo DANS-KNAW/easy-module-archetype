@@ -12,6 +12,6 @@ case class ${javaName}Servlet(app: ${javaName}App) extends ScalatraServlet with 
 
   get("/") {
     contentType = "text/plain"
-    Ok("${name} Service running ...")
+    Ok("${name} Service running...")
   }
 }

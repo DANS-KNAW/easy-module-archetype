@@ -9,7 +9,7 @@ Fixes EASY-
 
 #### How should this be manually tested?
 
-#### related pull requests on github
+#### Related pull requests on github
 repo                       | PR                | note
 -------------------------- | ----------------- | ----
 easy-                      | [PR#](PRlink)     | ..

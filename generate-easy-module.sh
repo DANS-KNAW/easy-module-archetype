@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DEFAULT_ARCHETYPE_VERSION=1.x-SNAPSHOT
+DEFAULT_ARCHETYPE_VERSION=1.0.0-SNAPSHOT
 
 read -p "easy-module-archetype version? (default = $DEFAULT_ARCHETYPE_VERSION): " ARCHETYPE_VERSION
 read -p "Module artifactId (e.g., easy-test-module): " ARTIFACT_ID

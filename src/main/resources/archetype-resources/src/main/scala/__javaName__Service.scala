@@ -36,12 +36,12 @@ class ${javaName}Service extends ${javaName}App with DebugEnhancedLogging {
   }
 
   def start(): Try[Unit] = Try {
-    info("Starting HTTP service ...")
+    info("Starting HTTP service...")
     server.start()
   }
 
   def stop(): Try[Unit] = Try {
-    info("Stopping HTTP service ...")
+    info("Stopping HTTP service...")
     server.stop()
   }
 

@@ -1,8 +1,24 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 #!/usr/bin/env bash
 
-BINPATH=`readlink -f $0`
-APPHOME=`dirname \`dirname $BINPATH \``
+BINPATH=`readlink -f ${symbol_dollar}0`
+APPHOME=`dirname \`dirname ${symbol_dollar}BINPATH \``
+MODULE=`basename ${symbol_dollar}APPHOME`
+LOGBACK_HOME=${symbol_dollar}HOME/logback.xml
+LOGBACK_RPM=/etc/opt/dans.knaw.nl/${symbol_dollar}MODULE/logback.xml
+LOGBACK_APPHOME=${symbol_dollar}APPHOME/cfg/logback.xml
 
-java -Dlogback.configurationFile=$APPHOME/cfg/logback.xml \
-     -Dapp.home=$APPHOME \
-     -jar $APPHOME/bin/${artifactId}.jar $@
+if [ -f ${symbol_dollar}LOGBACK_HOME ]; then
+    LOGBACK_CFG=${symbol_dollar}LOGBACK_HOME
+elif [ -f ${symbol_dollar}LOGBACK_RPM ]; then
+    LOGBACK_CFG=${symbol_dollar}LOGBACK_RPM
+else
+    LOGBACK_CFG=${symbol_dollar}LOGBACK_APPHOME
+fi
+
+LC_ALL=en_US.UTF-8 \
+java -Dlogback.configurationFile=${symbol_dollar}LOGBACK_CFG \
+     -Dapp.home=${symbol_dollar}APPHOME \
+     -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}MODULE.jar ${symbol_dollar}@

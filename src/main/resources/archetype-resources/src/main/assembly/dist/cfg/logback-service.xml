@@ -2,13 +2,13 @@
 <configuration scan="true" scanPeriod="1 minute">
     <appender name="FILE"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/log/${artifactId}/${artifactId}.log</file>
+        <file>/var/opt/dans.knaw.nl/log/${artifactId}/${artifactId}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/var/log/${artifactId}/${artifactId}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/var/opt/dans.knaw.nl/log/${artifactId}/${artifactId}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
-            <<pattern>[%date{ISO8601}] %-5level %msg%n %ex{full}</pattern>
+            <pattern>[%date{ISO8601}] %-5level %msg%n%ex</pattern>
         </encoder>
     </appender>
     <root level="warn">

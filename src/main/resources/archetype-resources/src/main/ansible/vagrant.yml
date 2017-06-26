@@ -1,18 +1,25 @@
 - hosts: "test"
   become: yes
-  vars:
-    force_reinstalls: yes
   tasks:
   - name: Install standard software
     yum: name="{{ item }}"
     with_items:
-      - java-1.8.0-openjdk
       - httpd
       - libselinux-python
       - libsemanage-python
+      - tree
+      - tmux
 
   - name: Enable Apache HTTP Server
-    service: name=httpd enabled=true state=started
+    service:
+      name: httpd
+      enabled: yes
+      state: started
+
+  - name: Enable SELinux
+    selinux:
+       policy: targeted
+       state: enforcing
 
   - name: Allow Apache HTTP Server to call back-end service
     seboolean:
@@ -21,16 +28,36 @@
       persistent: yes
 
   - name: Configure server name
-    lineinfile: dest=/etc/httpd/conf/httpd.conf
-      line='ServerName test'
-      insertafter='^# ServerName.*$'
+    lineinfile:
+      dest: "/etc/httpd/conf/httpd.conf"
+      line: 'ServerName test'
+      insertafter: '^#\s?ServerName.*80$'
 
   - name: Add configuration for site
-    template: src=site-config.template dest=/etc/httpd/conf.d/test.conf
-
-  - include_role:
-      name: dans.${artifactId}
-      tasks_from: install.yml
+    copy:
+      src: "test.conf"
+      dest: "/etc/httpd/conf.d/"
 
   - name: Reload Apache HTTP Server
-    service: name=httpd state=reloaded
+    service:
+      name: httpd
+      state: reloaded
+
+  - name: Add /opt/bin to PATH
+    copy:
+      src: opt.sh
+      dest: /etc/profile.d/
+      mode: "755"
+
+  - include_role:
+      name: yum-repo
+
+  - name: Installing package
+    yum:
+      name: dans.knaw.nl-${artifactId}
+      state: latest
+
+  - service:
+      name: ${artifactId}
+      state: started
+      enabled: yes

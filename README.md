@@ -7,16 +7,7 @@ Generate a skeleton EASY Module.
 SYNOPSIS
 --------
 
-       mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
-                -DarchetypeArtifactId=easy-module-archetype \
-                -DarchetypeVersion=1.x-SNAPSHOT \
-                -DgroupId=nl.knaw.dans.easy \
-                -DartifactId=easy-module \
-                -Dpackage=nl.knaw.dans.easy.module \
-                -DmoduleSubpackage=module \
-                -Dname="EASY Module" \
-                -DjavaName="EasyModule" \
-                -Ddescription="A longer description of this module"
+       generate-easy-module.sh
 
 DESCRIPTION
 -----------
@@ -27,49 +18,80 @@ Creates an EASY scala project, prepopulated with common files and structure. It 
 The archetype serves two purposes:
 
 * It sets up a skeleton project for you if you need to create a new EASY module.
-* More importantly, the skeleton is set up with the [current common practices].
+* More importantly, the skeleton is set up to support the [current common practices].
+
+### Features
+* Stub Scala source, including:
+    - Entry point for command line interface (`Command`)
+    - Service starter for a `initd` type daemon.
+    - Service class that starts up a Jetty instance
+    - An App trait that reads in settings from a properties file.
+    - Unit test that checks that parts of this `README.md` correpond with the output of the `--help`
+      command line option.
+    - Unit test that checks that the example configuration supporting the execution of the program
+      by Maven contain the configuration keys that are expected by the program.
+* Stub assembly resources:
+    - Command line starter script, `initd` and `systemd` scripts.
+    - Configuration files (`application.properties` and separate logback config files for command line
+      and daemon execution.)
+    - Assembly descriptor for the `tar.gz` archive.
+* Stub RPM configuration:
+    - A profile in the POM that configures the `rpm-maven-plugin`. This allows you to build the RPM (`mvn clean install -Prpm`)
+      (Requires RPM to be installed. On the Mac: `brew install rpm`.)
+    - Hook scripts, partially implemented, that will execute during RPM installation (before/after install and 
+      before/after remove).
+* Vagrant and ansible set-up:
+    - Allows you to quickly set-up a VM for testing. Simply type `vagrant up`. (Requires vagrant and ansible to be installed.)
+    - `yum-repo.yml` helper script, called from `src/main/ansible/vagrant.yml` (commented out by default) which sets up a
+      local yum repo and installs your rpm on the test VM.
+* Probably more, by the time your read this...
 
 [current common practices]: common-practices.md
 
-### Example usage
+ARGUMENTS
+----------
 
-Using interactively retrieved parameters in the defaults of other parameters does not currently seem feasible. For example,
-it would be nicer if the user only had to provide the `moduleSubpackage` and that it would be automatically appended to 
-`nl.knaw.dans.easy` to form the package name. However, the order in which the parameters are asked from the user cannot be configured, 
-and does not seem to follow any predictable pattern. That is why some redundant information needs to be provided, and user must
-ensure that it is consistent:
+The `generate-easy-module.sh` script will interactively query you for argument values.
 
-* The `moduleSubpackage` parameter *must* be the last package name in `package`.
-* The `javaName` parameter *must* be the `name` transformed into the format a Java class identifier (no spaces, capitals for the first letter of each word)
+EXAMPLES
+--------
 
-         mvn archetype:generate \ 
-                -DarchetypeGroupId=nl.knaw.dans.easy \
-                -DarchetypeArtifactId=easy-module-archetype \ 
-                -DarchetypeVersion=1.x-SNAPSHOT \
-                -DartifactId=easy-test-module \
-                -Ddescription="A test module" \
-                -Dpackage=nl.knaw.dans.easy.test \
-                -Dname="Module Test"
-                -DjavaName="ModuleTest" \
-                -DmoduleSubpackage=test
+This assumes that you have copied the `generate-easy-module.sh` script to a directory that is on your `$PATH`. On
+the Mac that could be `/usr/local/bin`
 
-This will create a module called `easy-test-module`. 
+    $ cd ~/git/my-test-projects
+    $ generate-easy-module.sh
+    > easy-module-archetype version? (default = 1.x-SNAPSHOT): [Enter]
+    > Module artifactId (e.g., easy-test-module): easy-hello-world [Enter]
+    > Name module's main package (i.e. the one under nl.knaw.dans.easy): hello [Enter]
+    > Description (one to four sentences): Simple example \ [Enter]
+      that demonstrates that this generation script works. [Enter]
+    > [INFO] Scanning for projects...
+      [INFO]
+      [INFO] ------------------------------------------------------------------------
+      [INFO] Building Maven Stub Project (No POM) 1
+      [INFO] ------------------------------------------------------------------------
+      ... <more output>
+      Confirm properties configuration:
+      groupId: nl.knaw.dans.easy
+      artifactId: easy-hello-world
+      version: 1.x-SNAPSHOT
+      package: nl.knaw.dans.easy.hello
+      description: Simple example that demonstrates that this generation script works.
+      javaName: EasyHelloWorld
+      moduleSubpackage: hello
+      name: EASY Hello World
+       Y: : [Enter]
+    > ... <more output>
+      [INFO] BUILD SUCCESS
+      [INFO] ------------------------------------------------------------------------
+      [INFO] Total time: 2.333 s
+      [INFO] Finished at: 2017-05-21T10:15:21+02:00
+      [INFO] Final Memory: 30M/308M
+      [INFO] ------------------------------------------------------------------------
+    $ cd easy-hello-world [Enter]
+    $ rm init-project.sh [Enter]
 
-### Initializing the project
-
-The archetype plugin does not take care of everything. That is why a helper script is provided, that will finish setting up the 
-project for you:
-
-    sh init-project.sh
-
-Note that you must type `sh` before the script name, as it is not by default executable. The script will generate license headers, build the project
-and make some other helper script executable. To find out what it does exactly, take a look at it!
-
-As a final step you should initialize a git project and have the project added to GitHub. I have left this out of `init-project.sh` as I am not sure if
-it could mess up your project if you accidentally run `init-project.sh` multiple times. Anyway, the command does not require much of you:
-
-    git init
-    
 Now, you are all set to start developing, except ...    
 
 ### Delete what you do not use!
@@ -83,23 +105,6 @@ in the future, just delete the stuff! For example: if you only need a command li
 * the `run-service` sub-command,
 * maybe some other things as well: check!
 
-ARGUMENTS
-----------
-
-Parameter                | Description / value
--------------------------|-----------------------------------------------
-`archetypeGroupId`       | `nl.knaw.dans.easy`.
-`archetypeArtifactId`    | `easy-module-archetype`  
-`archetypeVersion`       | The version of the archetype your want to use.
-`artifactId`             | Archetype ID for your module `easy-<some name>`.
-`description`            | Short description.
-`package`                | Main package of your module, must be directly under `nl.knaw.dans.easy`, e.g., `nl.knaw.dans.easy.test`.
-`moduleSubpackage`       | The unqualified name of your your main package, e.g., `test`.
-`name`                   | Name of your project, capitalized title style, e.g. "My Test Module".
-`javaName`               | The same as `name` but with no spaces: `MyTestModule`.
-
-
-
 
 INSTALLATION AND CONFIGURATION
 ------------------------------
@@ -108,8 +113,10 @@ INSTALLATION AND CONFIGURATION
 * Clone and build the project if you want to use a snapshot.
 
 
-BUILDING FROM SOURCE
---------------------
+DEVELOPMENT
+-----------
+
+### Building from source
 
 Prerequisites:
 

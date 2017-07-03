@@ -8,13 +8,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-module-archetype</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
     <name>EASY Module Archetype</name>
     <description>Maven archetype for creating an EASY module.</description>
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
-        <tag>v1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <properties>
         <artifactory-maven-plugin.version>2.4.1</artifactory-maven-plugin.version>

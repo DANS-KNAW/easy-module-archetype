@@ -18,7 +18,7 @@
 echo Setting .gitignores...
 mv _gitignore .gitignore
 
-echo Removing unnecessary directory nesting in scala source code ...
+echo Removing unnecessary directory nesting in scala source code...
 mv src/main/scala/nl/knaw/dans/easy/${moduleSubpackage} src/main/scala/${package}
 rm -fr src/main/scala/nl
 mv src/test/scala/nl/knaw/dans/easy/${moduleSubpackage} src/test/scala/${package}
@@ -27,8 +27,11 @@ rm -fr src/test/scala/nl
 echo Making helper scripts executable...
 chmod +x *.sh
 
-echo Resetting debug-config...
-./debug-reset-apphome.sh
+which run-reset-env.sh > /dev/null
+if [ $? -eq 0 ]; then
+    echo Resetting debug-config...
+    run-reset-env.sh
+fi
 
 #
 # Building is the last thing we do. Somehow bash sometimes skips over the next few characters after the

@@ -9,7 +9,6 @@ case class CommandLineOptions(override val args: Seq[String], app: ${javaName}Ap
   appendDefaultToDescription = true
   editBuilder(_.setHelpWidth(110))
   printedName = "${artifactId}"
-  private val _________ = " " * printedName.length
   private val SUBCOMMAND_SEPARATOR = "---\n"
   val description: String = s"""${description}"""
   val synopsis: String = s"""${symbol_dollar}printedName \\
@@ -22,7 +21,7 @@ case class CommandLineOptions(override val args: Seq[String], app: ${javaName}Ap
            |
            |Usage:
            |
-           |  ${symbol_dollar}synopsis
+           |${symbol_dollar}synopsis
            |
            |Options:
            |""".stripMargin)

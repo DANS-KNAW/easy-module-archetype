@@ -14,26 +14,24 @@ import org.scalatra.servlet.ScalatraListener
 
 import scala.util.Try
 
-class ${javaName}Service extends ${javaName}App with DebugEnhancedLogging {
+class ${javaName}Service(app: ${javaName}App) extends DebugEnhancedLogging {
   import logger._
-  validateSettings()
 
-  private val port = properties.getInt("daemon.http.port")
-  private val server = new Server(port)
+  private val server = new Server(app.httpPort)
   private val context = new ServletContextHandler(ServletContextHandler.NO_SESSIONS)
-  context.setInitParameter(ScalatraListener.LifeCycleKey, "${package}.ServletMounter")
-  context.setAttribute(CONTEXT_ATTRIBUTE_APPLICATION, this)
-  context.addEventListener(new ScalatraListener())
+  context.addEventListener(new ScalatraListener() {
+    override def probeForCycleClass(classLoader: ClassLoader): (String, LifeCycle) = {
+      ("anonymous", new LifeCycle {
+        override def init(context: ServletContext): Unit = {
+          debug("Mounting servlet...")
+          context.mount(new ${javaName}Servlet(app), "/")
+          debug("Servlet mounted.")
+        }
+      })
+    }
+  })
   server.setHandler(context)
-  info(s"HTTP port is $port")
-
-  if (properties.containsKey("daemon.ajp.port")) {
-    val ajp = new Ajp13SocketConnector()
-    val ajpPort = properties.getInt("daemon.ajp.port")
-    ajp.setPort(ajpPort)
-    server.addConnector(ajp)
-    info(s"AJP port is $ajpPort")
-  }
+  info(s"HTTP port is ${symbol_dollar}{app.httpPort}")
 
   def start(): Try[Unit] = Try {
     info("Starting HTTP service...")
@@ -47,14 +45,5 @@ class ${javaName}Service extends ${javaName}App with DebugEnhancedLogging {
 
   def destroy(): Try[Unit] = Try {
     server.destroy()
-  }
-}
-
-class ServletMounter extends LifeCycle {
-  override def init(context: ServletContext): Unit = {
-    context.getAttribute(CONTEXT_ATTRIBUTE_APPLICATION) match {
-      case app: ${javaName}App => context.mount(${javaName}Servlet(app), "/")
-      case _ => throw new IllegalStateException("Service not configured: no ${javaName}App found")
-    }
   }
 }

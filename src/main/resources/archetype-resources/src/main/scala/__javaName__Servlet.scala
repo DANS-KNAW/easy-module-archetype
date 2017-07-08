@@ -6,7 +6,7 @@ package ${package}
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 import org.scalatra._
 
-case class ${javaName}Servlet(app: ${javaName}App) extends ScalatraServlet with DebugEnhancedLogging {
+class ${javaName}Servlet(app: ${javaName}App) extends ScalatraServlet with DebugEnhancedLogging {
   import app._
   import logger._
 

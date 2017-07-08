@@ -10,10 +10,12 @@ class ServiceStarter extends Daemon {
   var log: Logger = _ // Not loading logger yet, to avoid possibility of errors before init is called
   var service: ${javaName}Service = _ // Idem
 
-  def init(ctx: DaemonContext) = {
+  def init(ctx: DaemonContext): Unit = {
     log = LoggerFactory.getLogger(getClass)
+    log.info("Creating application object...")
+    val app = new ${javaName}App
     log.info("Initializing service...")
-    service = new ${javaName}Service
+    service = new ${javaName}Service(app)
     log.info("Service initialized.")
   }
 

@@ -9,12 +9,14 @@ import scala.language.reflectiveCalls
 import scala.util.control.NonFatal
 import scala.util.{Failure, Try}
 
-object Command extends App with ${javaName}App with DebugEnhancedLogging {
+object Command extends App with DebugEnhancedLogging {
   import logger._
   type FeedBackMessage = String
 
-  debug("Starting command line interface")
-  private val opts = CommandLineOptions(args, this)
+  debug("Creating application object.")
+  val app = new ${javaName}App
+  debug("Parsing command line options.")
+  private val opts = CommandLineOptions(args, app)
   opts.verify()
 
   private val result: Try[FeedBackMessage] = opts.subcommand match {
@@ -29,7 +31,7 @@ object Command extends App with ${javaName}App with DebugEnhancedLogging {
 
   private def runAsService(): Try[FeedBackMessage] = Try {
     import logger._
-    val service = new ${javaName}Service()
+    val service = new ${javaName}Service(app)
     Runtime.getRuntime.addShutdownHook(new Thread("service-shutdown") {
       override def run(): Unit = {
         info("Stopping service ...")

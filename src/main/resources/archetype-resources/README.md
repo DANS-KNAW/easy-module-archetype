@@ -2,15 +2,14 @@ ${artifactId}
 ===========
 [![Build Status](https://travis-ci.org/DANS-KNAW/${artifactId}.png?branch=master)](https://travis-ci.org/DANS-KNAW/${artifactId})
 
-<Remove this comment and extend the descriptions below>
+<!-- Remove this comment and extend the descriptions below -->
 
 
 SYNOPSIS
 --------
 
-    ${artifactId} \
-            <synopsis of command line parameters> \
-            <...possibly continued again, or all joined on one line>
+    ${artifactId} (synopsis of command line parameters)
+    ${artifactId} (... possibly multiple lines for subcommands)
 
 
 DESCRIPTION

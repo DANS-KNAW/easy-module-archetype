@@ -6,32 +6,36 @@ package ${package}
 import org.apache.commons.daemon.{Daemon, DaemonContext}
 import org.slf4j.{Logger, LoggerFactory}
 
-class ServiceStarter extends Daemon {
-  var log: Logger = _ // Not loading logger yet, to avoid possibility of errors before init is called
-  var service: ${javaName}Service = _ // Idem
+import nl.knaw.dans.lib.logging.DebugEnhancedLogging
+import org.apache.commons.daemon.{ Daemon, DaemonContext }
 
-  def init(ctx: DaemonContext): Unit = {
-    log = LoggerFactory.getLogger(getClass)
-    log.info("Creating application object...")
-    val app = new ${javaName}App
-    log.info("Initializing service...")
-    service = new ${javaName}Service(app)
-    log.info("Service initialized.")
+class ServiceStarter extends Daemon with DebugEnhancedLogging {
+  var app: ${javaName}App = _
+  var service: ${javaName}Service = _
+
+  override def init(context: DaemonContext): Unit = {
+    logger.info("Initializing service...")
+    val configuration = Configuration()
+    app = new ${javaName}App(new ApplicationWiring(configuration))
+    service = new ${javaName}Service(configuration.properties.getInt("daemon.http.port"), app)
+    logger.info("Service initialized.")
   }
 
-  def start(): Unit = {
-    log.info("Starting service...")
-    service.start()
-    log.info("Service started.")
+  override def start(): Unit = {
+    logger.info("Starting service...")
+    app.init()
+      .flatMap(_ => service.start())
+      .unsafeGetOrThrow
+    logger.info("Service started.")
   }
 
-  def stop(): Unit = {
-    log.info("Stopping service...")
-    service.stop()
+  override def stop(): Unit = {
+    logger.info("Stopping service...")
+    service.stop().unsafeGetOrThrow
   }
 
-  def destroy(): Unit = {
-    service.destroy()
-    log.info("Service stopped.")
+  override def destroy(): Unit = {
+    service.destroy().unsafeGetOrThrow
+    logger.info("Service stopped.")
   }
 }

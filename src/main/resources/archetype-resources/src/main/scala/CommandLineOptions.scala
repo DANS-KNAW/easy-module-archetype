@@ -5,7 +5,7 @@ package ${package}
 
 import org.rogach.scallop.{ScallopConf, ScallopOption, Subcommand, singleArgConverter}
 
-case class CommandLineOptions(override val args: Seq[String], app: ${javaName}App) extends ScallopConf(args) {
+class CommandLineOptions(args: Array[String], configuration: Configuration) extends ScallopConf(args) {
   appendDefaultToDescription = true
   editBuilder(_.setHelpWidth(110))
   printedName = "${artifactId}"
@@ -16,7 +16,7 @@ case class CommandLineOptions(override val args: Seq[String], app: ${javaName}Ap
        |  ${symbol_dollar}printedName (synopsis of command line parameters)
        |  ${symbol_dollar}printedName (... possibly multiple lines for subcommands)""".stripMargin
 
-  version(s"${symbol_dollar}printedName v${symbol_dollar}{ app.version }")
+  version(s"${symbol_dollar}printedName v${symbol_dollar}{ configuration.version }")
   banner(
     s"""
        |  ${symbol_dollar}description

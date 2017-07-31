@@ -1,0 +1,14 @@
+[Unit]
+Description=${name} Service
+
+[Service]
+ExecStart=/bin/java \
+   -Dlogback.configurationFile=/etc/opt/dans.knaw.nl/${artifactId}/logback-service.xml \
+   -Dapp.home=/opt/dans.knaw.nl/${artifactId} \
+   -jar /opt/dans.knaw.nl/${artifactId}/bin/${artifactId}.jar run-service
+
+User=${artifactId}
+Group=${artifactId}
+
+[Install]
+WantedBy=multi-user.target

@@ -7,12 +7,12 @@
 - hosts: "test"
   become: yes
   tasks:
-    - name: Installing package
-      yum:
-        name: dans.knaw.nl-${artifactId}
-        state: latest
+  - name: Installing package
+    yum:
+      name: dans.knaw.nl-${artifactId}
+      state: latest
 
-    - service:
-        name: ${artifactId}
-        state: started
-        enabled: yes
+  - service:
+      name: ${artifactId}
+      state: started
+      enabled: yes

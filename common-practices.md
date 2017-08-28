@@ -12,6 +12,8 @@ Code Style
 * Use the code formatting settings as specified in [dans-intellij-codestyles.xml](./dans-intellij-codestyles.xml).
   *(Rationale: too much variation in code formatting distracts from the code logic
    (or lack thereof ;-). Git diffs only show relevant changes in code text.)*
+* Use the code inspection settings an specified in [dans-intellij-inspections.xml](/dans-intellij-inspections.xml).
+  *(Rationale: too much variation in code conventions distracts from the code logic.)*
 
 Resource Management
 -------------------

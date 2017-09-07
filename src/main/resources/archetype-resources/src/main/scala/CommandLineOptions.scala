@@ -9,6 +9,7 @@ class CommandLineOptions(args: Array[String], configuration: Configuration) exte
   appendDefaultToDescription = true
   editBuilder(_.setHelpWidth(110))
   printedName = "${artifactId}"
+  version(configuration.version)
   private val SUBCOMMAND_SEPARATOR = "---\n"
   val description: String = s"""${description}"""
   val synopsis: String =

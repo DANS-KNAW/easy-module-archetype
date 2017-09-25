@@ -7,6 +7,10 @@
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>data/${artifactId}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>data/${artifactId}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
         <encoder>
             <pattern>[%date{ISO8601}] %-5level %msg%n</pattern>
         </encoder>

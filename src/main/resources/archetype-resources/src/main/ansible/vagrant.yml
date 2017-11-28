@@ -1,5 +1,7 @@
 - hosts: "test"
   become: yes
+  vars:
+    local_test_vm_base_backend_port: ${backendPort}
   roles:
     - dans.local-test-vm-base
     - dans.local-yum-repo

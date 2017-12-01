@@ -14,8 +14,7 @@ case class Configuration(version: String, properties: PropertiesConfiguration)
 
 object Configuration {
 
-  def apply(): Configuration = {
-    val home = Paths.get(System.getProperty("app.home"))
+  def apply(home: Path): Configuration = {
     val cfgPath = Seq(
       Paths.get(s"/etc/opt/dans.knaw.nl/${artifactId}/"),
       home.resolve("cfg"))

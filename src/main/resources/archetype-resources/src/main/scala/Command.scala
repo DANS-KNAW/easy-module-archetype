@@ -3,6 +3,8 @@
 #set($symbol_escape = '\ ')
 package ${package}
 
+import java.nio.file.Paths
+
 import nl.knaw.dans.lib.error._
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 import resource._
@@ -14,7 +16,7 @@ import scala.util.{ Failure, Try }
 object Command extends App with DebugEnhancedLogging {
   type FeedBackMessage = String
 
-  val configuration = Configuration()
+  val configuration = Configuration(Paths.get(System.getProperty("app.home")))
   val commandLine: CommandLineOptions = new CommandLineOptions(args, configuration) {
     verify()
   }

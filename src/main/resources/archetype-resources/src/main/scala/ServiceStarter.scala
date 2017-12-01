@@ -7,7 +7,6 @@ import org.apache.commons.daemon.{Daemon, DaemonContext}
 import org.slf4j.{Logger, LoggerFactory}
 
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
-import org.apache.commons.daemon.{ Daemon, DaemonContext }
 
 class ServiceStarter extends Daemon with DebugEnhancedLogging {
   var app: ${javaName}App = _

@@ -14,6 +14,7 @@ import org.scalatra.servlet.ScalatraListener
 import scala.util.Try
 
 class ${javaName}Service(serverPort: Int, app: ${javaName}App) extends DebugEnhancedLogging {
+
   import logger._
 
   private val server = new Server(serverPort)
@@ -28,7 +29,7 @@ class ${javaName}Service(serverPort: Int, app: ${javaName}App) extends DebugEnha
     }
   })
   server.setHandler(context)
-  info(s"HTTP port is ${symbol_dollar}{serverPort}")
+  info(s"HTTP port is ${symbol_dollar}{ serverPort }")
 
   def start(): Try[Unit] = Try {
     info("Starting service...")

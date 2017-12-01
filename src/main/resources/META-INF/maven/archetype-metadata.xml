@@ -17,6 +17,7 @@
             <defaultValue>1.0.0-SNAPSHOT</defaultValue>
         </requiredProperty>
         <requiredProperty key="javaName"/>
+        <requiredProperty key="backendPort"/>
     </requiredProperties>
     <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">

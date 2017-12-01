@@ -3,9 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}
 
-import org.apache.commons.daemon.{Daemon, DaemonContext}
-import org.slf4j.{Logger, LoggerFactory}
+import java.nio.file.Paths
 
+import org.apache.commons.daemon.{ Daemon, DaemonContext }
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 
 class ServiceStarter extends Daemon with DebugEnhancedLogging {
@@ -14,7 +14,7 @@ class ServiceStarter extends Daemon with DebugEnhancedLogging {
 
   override def init(context: DaemonContext): Unit = {
     logger.info("Initializing service...")
-    val configuration = Configuration()
+    val configuration = Configuration(Paths.get(System.getProperty("app.home")))
     app = new ${javaName}App(new ApplicationWiring(configuration))
     service = new ${javaName}Service(configuration.properties.getInt("daemon.http.port"), app)
     logger.info("Service initialized.")

@@ -1,13 +1,13 @@
 package ${package}
 
-import java.io.{ByteArrayOutputStream, File}
+import java.io.{ ByteArrayOutputStream, File }
+import java.nio.file.Paths
 
 import org.scalatest._
 
 class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
-  System.setProperty("app.home", "src/main/assembly/dist") // Use the default settings in this test
 
-  private val clo = new CommandLineOptions(Array[String](), Configuration()) {
+  private val clo = new CommandLineOptions(Array[String](), Configuration(Paths.get("src/main/assembly/dist"))) {
     // avoids System.exit() in case of invalid arguments or "--help"
     override def verify(): Unit = {}
   }
@@ -21,9 +21,9 @@ class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
   }
 
   "options in help info" should "be part of README.md" in {
-    val lineSeparators = s"(${System.lineSeparator()})+"
-    val options = helpInfo.split(s"${lineSeparators}Options:$lineSeparators")(1)
-    options.trim.length shouldNot be (0)
+    val lineSeparators = s"(${ System.lineSeparator() })+"
+    val options = helpInfo.split(s"${ lineSeparators }Options:$lineSeparators")(1)
+    options.trim should not be empty
     new File("README.md") should containTrimmed(options)
   }
 

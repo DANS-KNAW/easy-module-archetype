@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ${symbol_pound}include <service.sh>
 
 MODULE_NAME=${artifactId}

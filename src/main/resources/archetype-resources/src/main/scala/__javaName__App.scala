@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}
 
-import scala.util.{ Try, Success }
+import scala.util.{ Success, Try }
 
 class ${javaName}App(wiring: ApplicationWiring) extends AutoCloseable {
 

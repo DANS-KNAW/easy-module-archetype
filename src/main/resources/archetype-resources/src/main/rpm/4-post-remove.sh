@@ -2,7 +2,6 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 #!/usr/bin/env bash
-
 ${symbol_pound}include <service.sh>
 
 NUMBER_OF_INSTALLATIONS=${symbol_dollar}1

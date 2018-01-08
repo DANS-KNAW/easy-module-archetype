@@ -5,8 +5,9 @@ package ${package}
 
 import java.nio.file.Paths
 
-import org.apache.commons.daemon.{ Daemon, DaemonContext }
+import nl.knaw.dans.lib.error.TryExtensions
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
+import org.apache.commons.daemon.{ Daemon, DaemonContext }
 
 class ServiceStarter extends Daemon with DebugEnhancedLogging {
   var app: ${javaName}App = _

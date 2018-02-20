@@ -20,15 +20,9 @@ object Command extends App with DebugEnhancedLogging {
   val commandLine: CommandLineOptions = new CommandLineOptions(args, configuration) {
     verify()
   }
-  val app = new ${javaName}App(new ApplicationWiring(configuration))
+  val app = new ${javaName}App(configuration)
 
-  managed(app)
-    .acquireAndGet(app => {
-      for {
-        _ <- app.init()
-        msg <- runSubcommand(app)
-      } yield msg
-    })
+  runSubcommand(app)
     .doIfSuccess(msg => println(s"OK: $msg"))
     .doIfFailure { case e => logger.error(e.getMessage, e) }
     .doIfFailure { case NonFatal(e) => println(s"FAILED: ${ e.getMessage }") }

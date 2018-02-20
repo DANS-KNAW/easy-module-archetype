@@ -16,16 +16,14 @@ class ServiceStarter extends Daemon with DebugEnhancedLogging {
   override def init(context: DaemonContext): Unit = {
     logger.info("Initializing service...")
     val configuration = Configuration(Paths.get(System.getProperty("app.home")))
-    app = new ${javaName}App(new ApplicationWiring(configuration))
+    app = new ${javaName}App(configuration)
     service = new ${javaName}Service(configuration.properties.getInt("daemon.http.port"), app)
     logger.info("Service initialized.")
   }
 
   override def start(): Unit = {
     logger.info("Starting service...")
-    app.init()
-      .flatMap(_ => service.start())
-      .unsafeGetOrThrow
+    service.start().unsafeGetOrThrow
     logger.info("Service started.")
   }
 

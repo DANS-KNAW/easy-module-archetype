@@ -43,6 +43,5 @@ class ${javaName}Service(serverPort: Int, app: ${javaName}App) extends DebugEnha
 
   def destroy(): Try[Unit] = Try {
     server.destroy()
-    app.close()
   }
 }

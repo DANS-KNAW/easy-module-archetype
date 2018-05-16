@@ -23,11 +23,11 @@ ARGUMENTS
 
     Options:
 
-        --help      Show help message
-        --version   Show version of this program
+       -h, --help      Show help message
+       -h, --version   Show version of this program
 
     Subcommand: run-service - Starts ${name} as a daemon that services HTTP requests
-        --help   Show help message
+       -h, --help   Show help message
     ---
 
 EXAMPLES

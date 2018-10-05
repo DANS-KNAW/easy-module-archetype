@@ -24,7 +24,7 @@ ARGUMENTS
     Options:
 
        -h, --help      Show help message
-       -h, --version   Show version of this program
+       -v, --version   Show version of this program
 
     Subcommand: run-service - Starts ${name} as a daemon that services HTTP requests
        -h, --help   Show help message

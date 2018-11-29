@@ -11,11 +11,13 @@
             <pattern>[%date{ISO8601}] %-5level %msg%n</pattern>
         </encoder>
     </appender>
-    <appender name="journal" class="org.gnieh.logback.SystemdJournalAppender" />
+    <appender name="journal" class="org.gnieh.logback.SystemdJournalAppender" >
+        <logStackTrace>true</logStackTrace>
+        <syslogIdentifier>${artifactId}</syslogIdentifier>
+    </appender>
     <root level="warn">
         <appender-ref ref="FILE" />
-    </root>
-    <logger name="nl.knaw.dans.easy" level="info" >
         <appender-ref ref="journal" />
-    </logger>
+    </root>
+    <logger name="nl.knaw.dans.easy" level="info" />
 </configuration>

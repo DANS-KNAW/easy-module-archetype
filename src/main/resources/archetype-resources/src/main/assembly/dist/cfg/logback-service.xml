@@ -13,6 +13,7 @@
     </appender>
     <appender name="journal" class="org.gnieh.logback.SystemdJournalAppender" >
         <logStackTrace>true</logStackTrace>
+        <logLoggerName>true</logLoggerName>
         <syslogIdentifier>${artifactId}</syslogIdentifier>
     </appender>
     <root level="warn">

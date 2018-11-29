@@ -79,6 +79,11 @@
             <groupId>commons-daemon</groupId>
             <artifactId>commons-daemon</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.gnieh</groupId>
+            <artifactId>logback-journal</artifactId>
+            <version>0.3.0</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

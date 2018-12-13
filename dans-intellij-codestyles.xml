@@ -101,6 +101,9 @@
     </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="Scala">
+    <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="1" />
+    <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
+    <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />
     <option name="BLANK_LINES_AROUND_CLASS" value="0" />
     <option name="ELSE_ON_NEW_LINE" value="true" />
     <option name="METHOD_PARAMETERS_WRAP" value="1" />

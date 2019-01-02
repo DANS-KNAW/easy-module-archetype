@@ -18,7 +18,7 @@
 <code_scheme name="dans-intellij-codestyles" version="173">
   <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
   <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
-  <option name="RIGHT_MARGIN" value="100" />
+  <option name="RIGHT_MARGIN" value="1000" />
   <option name="FORMATTER_TAGS_ENABLED" value="true" />
   <DBN-PSQL>
     <case-options enabled="false">

@@ -58,3 +58,4 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
 
 cd $ARTIFACT_ID
 sh init-project.sh
+rm init-project.sh

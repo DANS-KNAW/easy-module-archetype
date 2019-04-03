@@ -19,6 +19,7 @@
         <requiredProperty key="javaName"/>
         <requiredProperty key="backendPort"/>
         <requiredProperty key="useLocalVM"/>
+        <requiredProperty key="inceptionYear"/>
     </requiredProperties>
     <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">

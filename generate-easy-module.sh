@@ -53,7 +53,8 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
         -Dname="$MODULE_NAME" \
         -DjavaName="$MODULE_JAVA_NAME" \
         -Ddescription="$DESCRIPTION" \
-        -DuseLocalVM="$USE_LOCAL_VM"
+        -DuseLocalVM="$USE_LOCAL_VM" \
+        -DinceptionYear=$(date +"%Y")
 
 cd $ARTIFACT_ID
 sh init-project.sh

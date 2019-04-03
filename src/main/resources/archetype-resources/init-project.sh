@@ -24,6 +24,12 @@ rm -fr src/main/scala/nl
 mv src/test/scala/nl/knaw/dans/easy/${moduleSubpackage} src/test/scala/${package}
 rm -fr src/test/scala/nl
 
+if [[ !${useLocalVM} ]]; then
+    echo "removing Vagrant/Ansible files"
+    rm Vagrantfile
+    rm -rf src/main/ansible
+fi
+
 echo Making helper scripts executable...
 chmod +x *.sh
 

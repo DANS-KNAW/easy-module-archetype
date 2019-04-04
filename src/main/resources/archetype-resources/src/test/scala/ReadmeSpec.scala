@@ -7,7 +7,11 @@ import org.scalatest._
 
 class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
 
-  private val clo = new CommandLineOptions(Array[String](), Configuration(Paths.get("src/main/assembly/dist"))) {
+  private val configuration = Configuration(
+    version = "my-version",
+    serverPort = 12345,
+  )
+  private val clo = new CommandLineOptions(Array[String](), configuration) {
     // avoids System.exit() in case of invalid arguments or "--help"
     override def verify(): Unit = {}
   }

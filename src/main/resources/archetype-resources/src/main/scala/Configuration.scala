@@ -3,30 +3,32 @@
 #set( $symbol_escape = '\' )
 package ${package}
 
-import java.nio.file.{ Files, Path, Paths }
-
+import better.files.File
+import better.files.File.root
 import org.apache.commons.configuration.PropertiesConfiguration
-import resource.managed
 
-import scala.io.Source
-
-case class Configuration(version: String, properties: PropertiesConfiguration)
+case class Configuration(version: String,
+                         serverPort: Int,
+                         // other configuration properties defined in application.properties
+                        )
 
 object Configuration {
 
-  def apply(home: Path): Configuration = {
+  def apply(home: File): Configuration = {
     val cfgPath = Seq(
-      Paths.get(s"/etc/opt/dans.knaw.nl/${artifactId}/"),
-      home.resolve("cfg"))
-      .find(Files.exists(_))
+      root / "etc" / "opt" / "dans.knaw.nl" / "${artifactId}",
+      home / "cfg")
+      .find(_.exists)
       .getOrElse { throw new IllegalStateException("No configuration directory found") }
+    val properties = new PropertiesConfiguration() {
+      setDelimiterParsingDisabled(true)
+      load((cfgPath / "application.properties").toJava)
+    }
 
     new Configuration(
-      version = managed(Source.fromFile(home.resolve("bin/version").toFile)).acquireAndGet(_.mkString),
-      properties = new PropertiesConfiguration() {
-        setDelimiterParsingDisabled(true)
-        load(cfgPath.resolve("application.properties").toFile)
-      }
+      version = (home / "bin" / "version").contentAsString.stripLineEnd,
+      serverPort = properties.getInt("daemon.http.port"),
+      // read other properties defined in application.properties
     )
   }
 }

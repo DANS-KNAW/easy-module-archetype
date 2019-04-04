@@ -3,11 +3,9 @@
 #set($symbol_escape = '\ ')
 package ${package}
 
-import java.nio.file.Paths
-
+import better.files.File
 import nl.knaw.dans.lib.error._
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
-import resource._
 
 import scala.language.reflectiveCalls
 import scala.util.control.NonFatal
@@ -16,7 +14,7 @@ import scala.util.{ Failure, Try }
 object Command extends App with DebugEnhancedLogging {
   type FeedBackMessage = String
 
-  val configuration = Configuration(Paths.get(System.getProperty("app.home")))
+  val configuration = Configuration(File(System.getProperty("app.home")))
   val commandLine: CommandLineOptions = new CommandLineOptions(args, configuration) {
     verify()
   }
@@ -38,7 +36,7 @@ object Command extends App with DebugEnhancedLogging {
   }
 
   private def runAsService(app: ${javaName}App): Try[FeedBackMessage] = Try {
-    val service = new ${javaName}Service(configuration.properties.getInt("daemon.http.port"), app)
+    val service = new ${javaName}Service(configuration.serverPort, app)
     Runtime.getRuntime.addShutdownHook(new Thread("service-shutdown") {
       override def run(): Unit = {
         service.stop()

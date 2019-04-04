@@ -18,6 +18,7 @@
 
 DEFAULT_ARCHETYPE_VERSION=2.0.3
 USE_LOCAL_VM=true
+PROJECT_PREFIX="easy"
 
 read -p "easy-module-archetype version? (default = $DEFAULT_ARCHETYPE_VERSION): " ARCHETYPE_VERSION
 read -p "Module artifactId (e.g., easy-test-module): " ARTIFACT_ID
@@ -38,16 +39,25 @@ useLocalVM() {
 }
 useLocalVM
 
+PROJECT_PREFIX_REGEX="^([^-]+)-.*$"
+if [[ "$ARTIFACT_ID" =~ $PROJECT_PREFIX_REGEX ]]; then
+    PROJECT_PREFIX=`echo "$ARTIFACT_ID" | sed -E "s/$PROJECT_PREFIX_REGEX/\1/"`
+else
+    echo "artifactId does not match the expected pattern; module is not generated"
+    exit 1
+fi
+
 ARTIFACT_PHRASE=`echo $ARTIFACT_ID | tr '-' ' ' | awk '{for (i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1'`
-MODULE_NAME=`echo $ARTIFACT_PHRASE | sed -e 's/Easy/EASY/'`
+MODULE_NAME=`echo $ARTIFACT_PHRASE | awk '{$1=toupper($1); print $0}'`
 MODULE_JAVA_NAME=${ARTIFACT_PHRASE// }
 
 mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
         -DarchetypeArtifactId=easy-module-archetype \
         -DarchetypeVersion=${ARCHETYPE_VERSION:-"$DEFAULT_ARCHETYPE_VERSION"} \
-        -DgroupId=nl.knaw.dans.easy \
+        -DgroupId=nl.knaw.dans.$PROJECT_PREFIX \
         -DartifactId=$ARTIFACT_ID \
-        -Dpackage=nl.knaw.dans.easy.$SUBPACKAGE \
+        -Dpackage=nl.knaw.dans.$PROJECT_PREFIX.$SUBPACKAGE \
+        -DprojectPrefix=$PROJECT_PREFIX \
         -DmoduleSubpackage=$SUBPACKAGE \
         -DbackendPort="$BACK_END_PORT" \
         -Dname="$MODULE_NAME" \

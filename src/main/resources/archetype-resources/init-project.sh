@@ -19,9 +19,9 @@ echo Setting .gitignores...
 mv _gitignore .gitignore
 
 echo Removing unnecessary directory nesting in scala source code...
-mv src/main/scala/nl/knaw/dans/easy/${moduleSubpackage} src/main/scala/${package}
+mv src/main/scala/nl/knaw/dans/${projectPrefix}/${moduleSubpackage} src/main/scala/${package}
 rm -fr src/main/scala/nl
-mv src/test/scala/nl/knaw/dans/easy/${moduleSubpackage} src/test/scala/${package}
+mv src/test/scala/nl/knaw/dans/${projectPrefix}/${moduleSubpackage} src/test/scala/${package}
 rm -fr src/test/scala/nl
 
 if [[ !${useLocalVM} ]]; then

@@ -36,7 +36,9 @@ object Command extends App with DebugEnhancedLogging {
   }
 
   private def runAsService(app: ${javaName}App): Try[FeedBackMessage] = Try {
-    val service = new ${javaName}Service(configuration.serverPort, app)
+    val service = new ${javaName}Service(configuration.serverPort, Map(
+      "/" -> new ${javaName}Servlet(app, configuration.version),
+    ))
     Runtime.getRuntime.addShutdownHook(new Thread("service-shutdown") {
       override def run(): Unit = {
         service.stop()

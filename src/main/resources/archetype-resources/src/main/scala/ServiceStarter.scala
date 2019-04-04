@@ -16,7 +16,9 @@ class ServiceStarter extends Daemon with DebugEnhancedLogging {
     logger.info("Initializing service...")
     val configuration = Configuration(File(System.getProperty("app.home")))
     app = new ${javaName}App(configuration)
-    service = new ${javaName}Service(configuration.serverPort, app)
+    service = new ${javaName}Service(configuration.serverPort, Map(
+      "/" -> new ${javaName}Servlet(app, configuration.version),
+    ))
     logger.info("Service initialized.")
   }
 

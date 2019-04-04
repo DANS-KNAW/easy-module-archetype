@@ -6,12 +6,11 @@ package ${package}
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 import org.scalatra._
 
-class ${javaName}Servlet(app: ${javaName}App) extends ScalatraServlet with DebugEnhancedLogging {
-  import app._
-  import logger._
+class ${javaName}Servlet(app: ${javaName}App,
+                         version: String) extends ScalatraServlet with DebugEnhancedLogging {
 
   get("/") {
     contentType = "text/plain"
-    Ok("${name} Service running...")
+    Ok(s"${name} Service running (${symbol_dollar}version)")
   }
 }

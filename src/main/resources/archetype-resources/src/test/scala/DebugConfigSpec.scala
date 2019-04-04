@@ -1,7 +1,6 @@
 package ${package}
 
-import java.nio.file.{ Files, Paths }
-
+import better.files.File
 import org.apache.commons.configuration.PropertiesConfiguration
 import org.scalatest.{ FlatSpec, Matchers }
 
@@ -9,16 +8,19 @@ import scala.collection.JavaConverters._
 
 class DebugConfigSpec extends FlatSpec with Matchers {
 
-  "debug-config" should "contain the same files as src/main/assembly/dist/cfg" in {
-    val filesInDebugConfig = resource.managed(Files.list(Paths.get("src/test/resources/debug-config"))).acquireAndGet(_.iterator().asScala.toSet)
-    val filesInDistCfg = resource.managed(Files.list(Paths.get("src/main/assembly/dist/cfg"))).acquireAndGet(_.iterator().asScala.toSet)
+  val configDir = File("src/main/assembly/dist/cfg")
+  val debugConfigDir = File("src/test/resources/debug-config")
 
-    filesInDebugConfig.map(_.getFileName) shouldBe filesInDistCfg.map(_.getFileName)
+  "debug-config" should "contain the same files as src/main/assembly/dist/cfg" in {
+    val filesInDebugConfig = debugConfigDir.list.toSet
+    val filesInDistCfg = configDir.list.toSet
+
+    filesInDebugConfig.map(_.name) shouldBe filesInDistCfg.map(_.name)
   }
 
   it should "contain an application.properties with the same keys as the one in src/main/assembly/dist/cfg" in {
-    val propsInDebugConfig = new PropertiesConfiguration(Paths.get("src/test/resources/debug-config/application.properties").toFile)
-    val propsInDistCfg = new PropertiesConfiguration(Paths.get("src/main/assembly/dist/cfg/application.properties").toFile)
+    val propsInDebugConfig = new PropertiesConfiguration((debugConfigDir / "application.properties").toJava)
+    val propsInDistCfg = new PropertiesConfiguration((configDir / "application.properties").toJava)
 
     propsInDebugConfig.getKeys.asScala.toSet shouldBe propsInDistCfg.getKeys.asScala.toSet
   }

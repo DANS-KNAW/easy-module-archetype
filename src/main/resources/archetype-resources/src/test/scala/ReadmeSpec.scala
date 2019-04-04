@@ -1,8 +1,8 @@
 package ${package}
 
-import java.io.{ ByteArrayOutputStream, File }
-import java.nio.file.Paths
+import java.io.ByteArrayOutputStream
 
+import better.files.File
 import org.scalatest._
 
 class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
@@ -28,15 +28,15 @@ class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
     val lineSeparators = s"(${ System.lineSeparator() })+"
     val options = helpInfo.split(s"${ lineSeparators }Options:$lineSeparators")(1)
     options.trim should not be empty
-    new File("README.md") should containTrimmed(options)
+    File("README.md") should containTrimmed(options)
   }
 
   "synopsis in help info" should "be part of README.md" in {
-    new File("README.md") should containTrimmed(clo.synopsis)
+    File("README.md") should containTrimmed(clo.synopsis)
   }
 
   "description line(s) in help info" should "be part of README.md and pom.xml" in {
-    new File("README.md") should containTrimmed(clo.description)
-    new File("pom.xml") should containTrimmed(clo.description)
+    File("README.md") should containTrimmed(clo.description)
+    File("pom.xml") should containTrimmed(clo.description)
   }
 }

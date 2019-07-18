@@ -1,3 +1,6 @@
+#set($symbol_pound = '#')
+#set($symbol_dollar = '$')
+#set($symbol_escape = '\')
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -7,12 +10,11 @@
     </appender>
 
     <!-- No logging during the build -->
-    <root level="off" >
-        <appender-ref ref="STDOUT" />
+    <root level="off">
+        <appender-ref ref="STDOUT"/>
     </root>
 
     <!-- Set log level during test with system property, e.g., mvn test -DLOG_LEVEL=debug -->
-    <logger name="nl.knaw.dans.${projectPrefix}" level="${LOG_LEVEL:-off}" />
-    <logger name="org.scalatest" level="info" />
-
+    <logger name="nl.knaw.dans.${projectPrefix}" level="${LOG_LEVEL:-off}"/>
+    <logger name="org.scalatest" level="info"/>
 </configuration>

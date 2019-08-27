@@ -30,7 +30,7 @@
     <name>EASY Module Archetype</name>
     <description>Maven archetype for creating an EASY module.</description>
     <scm>
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-module-archetype</developerConnection>
+        <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <properties>

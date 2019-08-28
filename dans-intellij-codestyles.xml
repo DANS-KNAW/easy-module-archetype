@@ -63,6 +63,10 @@
     <option name="XML_TEXT_WRAP" value="0" />
     <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
   </XML>
+  <yaml>
+    <option name="SEQUENCE_ON_NEW_LINE" value="true" />
+    <option name="AUTOINSERT_SEQUENCE_MARKER" value="false" />
+  </yaml>
   <codeStyleSettings language="JAVA">
     <option name="KEEP_LINE_BREAKS" value="false" />
     <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
@@ -112,5 +116,8 @@
   </codeStyleSettings>
   <codeStyleSettings language="XML">
     <option name="RIGHT_MARGIN" value="200" />
+  </codeStyleSettings>
+  <codeStyleSettings language="yaml">
+    <option name="SOFT_MARGINS" value="100" />
   </codeStyleSettings>
 </code_scheme>

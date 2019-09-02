@@ -20,7 +20,7 @@
     <parent>
         <groupId>nl.knaw.dans.shared</groupId>
         <artifactId>dans-mvn-plugin-defaults</artifactId>
-        <version>2.1.0</version>
+        <version>4.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.knaw.dans.easy</groupId>
@@ -30,7 +30,7 @@
     <name>EASY Module Archetype</name>
     <description>Maven archetype for creating an EASY module.</description>
     <scm>
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/easy-module-archetype</developerConnection>
+        <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <properties>
@@ -42,7 +42,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <url>http://maven.dans.knaw.nl/</url>
+            <url>http://maven.dans.knaw.nl/releases</url>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -51,7 +51,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <url>http://maven.dans.knaw.nl/</url>
+            <url>http://maven.dans.knaw.nl/releases</url>
         </pluginRepository>
     </pluginRepositories>
     <build>

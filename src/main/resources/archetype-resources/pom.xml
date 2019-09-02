@@ -6,7 +6,7 @@
     <parent>
         <groupId>nl.knaw.dans.shared</groupId>
         <artifactId>dans-scala-app-project</artifactId>
-        <version>3.1.0</version>
+        <version>4.0.0</version>
     </parent>
 
     <groupId>${groupId}</groupId>
@@ -98,7 +98,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <url>http://maven.dans.knaw.nl/</url>
+            <url>http://maven.dans.knaw.nl/releases</url>
         </repository>
     </repositories>
 
@@ -108,7 +108,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <url>http://maven.dans.knaw.nl/</url>
+            <url>http://maven.dans.knaw.nl/releases</url>
         </pluginRepository>
     </pluginRepositories>
 

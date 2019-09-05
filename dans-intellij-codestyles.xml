@@ -118,6 +118,6 @@
     <option name="RIGHT_MARGIN" value="200" />
   </codeStyleSettings>
   <codeStyleSettings language="yaml">
-    <option name="SOFT_MARGINS" value="100" />
+    <option name="SOFT_MARGINS" value="200" />
   </codeStyleSettings>
 </code_scheme>

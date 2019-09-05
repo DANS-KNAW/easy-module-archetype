@@ -3,6 +3,7 @@ Description=${name} Service
 
 [Service]
 ExecStart=/bin/java \
+   $INITIAL_HEAP_SIZE \
    -Dlogback.configurationFile=/etc/opt/dans.knaw.nl/${artifactId}/logback-service.xml \
    -Dapp.home=/opt/dans.knaw.nl/${artifactId} \
    -Dorg.scalatra.environment="production" \

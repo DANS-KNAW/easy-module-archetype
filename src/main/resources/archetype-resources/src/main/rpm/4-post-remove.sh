@@ -10,6 +10,5 @@ INSTALL_DIR=/opt/dans.knaw.nl/${symbol_dollar}MODULE_NAME
 PHASE="POST-REMOVE"
 
 echo "${symbol_dollar}PHASE: START (Number of current installations: ${symbol_dollar}NUMBER_OF_INSTALLATIONS)"
-service_remove_initd_service_script ${symbol_dollar}MODULE_NAME ${symbol_dollar}NUMBER_OF_INSTALLATIONS
 service_remove_systemd_unit ${symbol_dollar}MODULE_NAME ${symbol_dollar}NUMBER_OF_INSTALLATIONS
 echo "${symbol_dollar}PHASE: DONE"

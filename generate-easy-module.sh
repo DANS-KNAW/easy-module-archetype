@@ -17,7 +17,6 @@
 
 
 DEFAULT_ARCHETYPE_VERSION=2.0.3
-USE_LOCAL_VM=true
 PROJECT_PREFIX="easy"
 
 read -p "easy-module-archetype version? (default = $DEFAULT_ARCHETYPE_VERSION): " ARCHETYPE_VERSION
@@ -25,19 +24,6 @@ read -p "Module artifactId (e.g., easy-test-module): " ARTIFACT_ID
 read -p "Name module's main package (i.e. the one UNDER nl.knaw.dans.easy): " SUBPACKAGE
 read -p "Description (one to four sentences): " DESCRIPTION
 read -p "Backend port number (IN THE 20000-RANGE THAT HAS NOT BEEN TAKEN YET): " BACK_END_PORT
-
-useLocalVM() {
-    read -r -p "Do you want to use a local VM with Ansible/Vagrant? (y/n, default = y): " result
-    
-    if [[ "$result" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
-        USE_LOCAL_VM=true
-    elif [[ "$result" =~ ^([nN][oO]|[nN])+$ ]]; then
-        USE_LOCAL_VM=false
-    else
-        useLocalVM
-    fi
-}
-useLocalVM
 
 PROJECT_PREFIX_REGEX="^([^-]+)-.*$"
 if [[ "$ARTIFACT_ID" =~ $PROJECT_PREFIX_REGEX ]]; then
@@ -63,7 +49,6 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans.easy \
         -Dname="$MODULE_NAME" \
         -DjavaName="$MODULE_JAVA_NAME" \
         -Ddescription="$DESCRIPTION" \
-        -DuseLocalVM="$USE_LOCAL_VM" \
         -DinceptionYear=$(date +"%Y")
 
 cd $ARTIFACT_ID

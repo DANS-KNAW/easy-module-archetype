@@ -1,4 +1,0 @@
-- hosts: "test"
-  become: yes
-  roles:
-    - dans.local-yum-repo

@@ -40,10 +40,6 @@ The archetype serves two purposes:
       (Requires RPM to be installed. On the Mac: `brew install rpm`.)
     - Hook scripts, partially implemented, that will execute during RPM installation (before/after install and 
       before/after remove).
-* Vagrant and ansible set-up:
-    - Allows you to quickly set-up a VM for testing. Simply type `vagrant up`. (Requires vagrant and ansible to be installed.)
-    - `yum-repo.yml` helper script, called from `src/main/ansible/vagrant.yml` (commented out by default) which sets up a
-      local yum repo and installs your rpm on the test VM.
 * Probably more, by the time your read this...
 
 [current common practices]: common-practices.md

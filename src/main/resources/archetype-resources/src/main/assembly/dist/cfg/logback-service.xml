@@ -20,5 +20,5 @@
         <appender-ref ref="FILE"/>
         <appender-ref ref="JOURNAL" />
     </root>
-    <logger name="nl.knaw.dans.${projectPrefix}" level="info" />
+    <logger name="nl.knaw.dans.${projectPrefix}" level="info"/>
 </configuration>

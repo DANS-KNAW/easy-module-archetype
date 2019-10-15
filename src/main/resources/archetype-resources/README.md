@@ -35,36 +35,27 @@ EXAMPLES
 
     ${artifactId} -o value
 
-
 INSTALLATION AND CONFIGURATION
 ------------------------------
-
-### Installation steps
-
-1. Unzip the tarball to a directory of your choice, typically `/usr/local/`
-2. A new directory called ${artifactId}-<version> will be created
-3. Add the command script to your `PATH` environment variable by creating a symbolic link to it from a directory that is
-   on the path, e.g. 
-   
-        ln -s /usr/local/${artifactId}-<version>/bin/${artifactId} /usr/bin
-
-
-### Configuration
-
-General configuration settings can be set in `cfg/application.properties` and logging can be configured
-in `cfg/logback.xml`. The available settings are explained in comments in aforementioned files.
-
+Currently this project is build only as an RPM package for RHEL7/CentOS7 and later. The RPM will install the binaries to
+`/opt/dans.knaw.nl/${artifactId}`, the configuration files to `/etc/opt/dans.knaw.nl/${artifactId}`,
+and will install the service script for `systemd`. 
 
 BUILDING FROM SOURCE
 --------------------
-
 Prerequisites:
 
 * Java 8 or higher
 * Maven 3.3.3 or higher
+* RPM
 
 Steps:
+    
+    #!bash
+    git clone https://github.com/DANS-KNAW/${artifactId}.git
+    cd ${artifactId} 
+    mvn clean install
 
-        git clone https://github.com/DANS-KNAW/${artifactId}.git
-        cd ${artifactId}
-        mvn install
+If the `rpm` executable is found at `/usr/local/bin/rpm`, the build profile that includes the RPM 
+packaging will be activated. If `rpm` is available, but at a different path, then activate it by using
+Maven's `-P` switch: `mvn -Pprm install`.

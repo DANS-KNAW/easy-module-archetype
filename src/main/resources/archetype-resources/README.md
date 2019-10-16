@@ -51,7 +51,6 @@ Prerequisites:
 
 Steps:
     
-    #!bash
     git clone https://github.com/DANS-KNAW/${artifactId}.git
     cd ${artifactId} 
     mvn clean install

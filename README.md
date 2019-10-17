@@ -57,7 +57,7 @@ the Mac that could be `/usr/local/bin`
 
     $ cd ~/git/my-test-projects
     $ generate-easy-module.sh
-    > easy-module-archetype version? (default = 1.x-SNAPSHOT): [Enter]
+    > easy-module-archetype version? (default = 2.0.6): [Enter]
     > Module artifactId (e.g., easy-test-module): easy-hello-world [Enter]
     > Name module's main package (i.e. the one under nl.knaw.dans.easy): hello [Enter]
     > Description (one to four sentences): Simple example \ [Enter]

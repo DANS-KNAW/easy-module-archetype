@@ -62,6 +62,6 @@ If the `rpm` executable is found at `/usr/local/bin/rpm`, the build profile that
 packaging will be activated. If `rpm` is available, but at a different path, then activate it by using
 Maven's `-P` switch: `mvn -Pprm install`.
 
-Optionally, to build the tarball execute:
+Alternatively, to build the tarball execute:
 
-    mvn assembly:single
+    mvn clean install assembly:single

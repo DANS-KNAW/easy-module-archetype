@@ -38,7 +38,7 @@ EXAMPLES
 INSTALLATION AND CONFIGURATION
 ------------------------------
 Currently this project is built as an RPM package for RHEL7/CentOS7 and later. The RPM will install the binaries to
-`/opt/dans.knaw.nl/${artifactId}`, the configuration files to `/etc/opt/dans.knaw.nl/${artifactId}`. 
+`/opt/dans.knaw.nl/${artifactId}` and the configuration files to `/etc/opt/dans.knaw.nl/${artifactId}`. 
 
 To install the module on systems that do not support RPM you can copy and unarchive the tarball to the target host.
 You will have to take care of placing the files in the correct locations for your system yourself. For instructions

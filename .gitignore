@@ -13,6 +13,7 @@
 *.iml
 /.idea/
 .DS_Store
+/site
 
 # Eclipse
 /.project

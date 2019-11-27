@@ -105,7 +105,6 @@ Documentation
     - SYNOPSIS (*). This must contain a summary of the supported command line, using the conventions as illustrated
       by the following example. It must be identical to the `Usage:` part of the output of `<command> --help`. (This must
       be checked by the `ReadmeSpec` unit test.)
-      
       ```
         my-program subcommand1 [-o, --option1 <arg>] <explicit-name-of-trail-arg>
         my-program subcommand2 [-f, --flag1][{-m, --mutually-exclusive1|-n,--mutually-exclusive2}]

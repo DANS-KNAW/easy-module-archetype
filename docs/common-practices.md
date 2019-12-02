@@ -9,10 +9,10 @@ Code Style
   *(Rationale: easier to navigate when using tools with no support for Java packagges, e.g.,
    when working from the command line. Also, the packages `nl` through `easy` are never used
    to contain resources directly.)*
-* Use the code formatting settings as specified in [dans-intellij-codestyles.xml](./dans-intellij-codestyles.xml).
+* Use the code formatting settings as specified in [dans-intellij-codestyles.xml]({{dans_intellij_codestyles}}).
   *(Rationale: too much variation in code formatting distracts from the code logic
    (or lack thereof ;-). Git diffs only show relevant changes in code text.)*
-* Use the code inspection settings an specified in [dans-intellij-inspections.xml](/dans-intellij-inspections.xml).
+* Use the code inspection settings an specified in [dans-intellij-inspections.xml]({{dans_intellij_inspections}}).
   *(Rationale: too much variation in code conventions distracts from the code logic.)*
 
 Resource Management
@@ -28,7 +28,7 @@ Resource Management
 * Do not assume that XML is UTF-8 encoded, but instead let the parser use the `encoding` attribute
   in the XML prolog.
 
-[StandardCharsets constant]: https://docs.oracle.com/javase/8/docs/api/java/nio/charset/StandardCharsets.html#UTF_8
+[StandardCharsets constant]: {{ standardcharsets }}
   
 Testing
 -------
@@ -61,7 +61,7 @@ Testing
   efficiency and [DRY] are of lower priority, here.)*
   
   
-[DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself  
+[DRY]:   {{ DRY }}
   
 Debugging
 ---------
@@ -105,7 +105,6 @@ Documentation
     - SYNOPSIS (*). This must contain a summary of the supported command line, using the conventions as illustrated
       by the following example. It must be identical to the `Usage:` part of the output of `<command> --help`. (This must
       be checked by the `ReadmeSpec` unit test.)
-      
       ```
         my-program subcommand1 [-o, --option1 <arg>] <explicit-name-of-trail-arg>
         my-program subcommand2 [-f, --flag1][{-m, --mutually-exclusive1|-n,--mutually-exclusive2}]

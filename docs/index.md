@@ -105,7 +105,7 @@ in the future, just delete the stuff! For example: if you only need a command li
 INSTALLATION AND CONFIGURATION
 ------------------------------
 
-* Add `http://maven.dans.knaw.nl/` as a plug-in repository if you want to use a release version of this plug-in.
+* Add `https://maven.dans.knaw.nl/releases/` as a plug-in repository if you want to use a release version of this plug-in.
 * Clone and build the project if you want to use a snapshot.
 
 

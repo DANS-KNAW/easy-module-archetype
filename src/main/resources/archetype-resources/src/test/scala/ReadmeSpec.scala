@@ -24,19 +24,20 @@ class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
     mockedStdOut.toString
   }
 
+  private val readMe = File("docs/index.md")
   "options in help info" should "be part of README.md" in {
     val lineSeparators = s"(${ System.lineSeparator() })+"
     val options = helpInfo.split(s"${ lineSeparators }Options:$lineSeparators")(1)
     options.trim should not be empty
-    File("README.md") should containTrimmed(options)
+    readMe should containTrimmed(options)
   }
 
   "synopsis in help info" should "be part of README.md" in {
-    File("README.md") should containTrimmed(clo.synopsis)
+    readMe should containTrimmed(clo.synopsis)
   }
 
   "description line(s) in help info" should "be part of README.md and pom.xml" in {
-    File("README.md") should containTrimmed(clo.description)
+    readMe should containTrimmed(clo.description)
     File("pom.xml") should containTrimmed(clo.description)
   }
 }

@@ -22,6 +22,12 @@
         <requiredProperty key="inceptionYear"/>
     </requiredProperties>
     <fileSets>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>docs</directory>
+            <includes>
+                <include>*</include>
+            </includes>
+        </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
             <directory>src/main/scala/</directory>
             <includes>

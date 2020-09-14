@@ -5,6 +5,7 @@ package ${package}
 
 import better.files.File
 import better.files.File.root
+import nl.knaw.dans.lib.logging.DebugEnhancedLogging
 import org.apache.commons.configuration.PropertiesConfiguration
 
 case class Configuration(version: String,
@@ -12,7 +13,7 @@ case class Configuration(version: String,
                          // other configuration properties defined in application.properties
                         )
 
-object Configuration {
+object Configuration extends DebugEnhancedLogging {
 
   def apply(home: File): Configuration = {
     val cfgPath = Seq(
@@ -24,9 +25,13 @@ object Configuration {
       setDelimiterParsingDisabled(true)
       load((cfgPath / "application.properties").toJava)
     }
+    val version = (home / "bin" / "version").contentAsString.stripLineEnd
+    val agent = properties.getString("http.agent",s"${artifactId}/${symbol_dollar}version")
+    logger.info(s"setting http.agent to $agent")
+    System.setProperty("http.agent", agent)
 
     new Configuration(
-      version = (home / "bin" / "version").contentAsString.stripLineEnd,
+      version,
       serverPort = properties.getInt("daemon.http.port"),
       // read other properties defined in application.properties
     )

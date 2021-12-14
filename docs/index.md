@@ -4,6 +4,8 @@ easy-module-archetype
 
 Generate a skeleton EASY Module.
 
+DEPRECATED. USE dans-module-archetype instead.
+
 SYNOPSIS
 --------
 
